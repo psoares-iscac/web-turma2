@@ -1,0 +1,22 @@
+
+#menu-principal{
+    display: flex;
+    justify-content: right;
+    background-color: lightgray;
+    gap: 2rem;
+}
+
+.menu{
+    /*display: inline-block;
+    width:300px;*/
+    padding: 1rem 1rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.3rem;
+    color:green;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.menu:hover{
+    text-decoration:underline;
+}
