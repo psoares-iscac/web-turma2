@@ -27,11 +27,35 @@
             color:white;
             text-align: center;
         }
+
+        #galeria{
+            display: flex;
+            gap: 1rem;
+            /*flex-flow: column;
+            justify-content: space-around;
+            align-items: baseline;*/
+            width: 85%;
+            margin: 2rem auto;
+        }
+
+        #galeria .card{
+            flex-grow: 1;
+            width: 100%;
+        }
+
+        #galeria .card img{
+            width: 100%;
+            height: auto;
+        }
+
+        #galeria .card button{
+            width: 100%;
+            padding: 1rem;
+        }
+
     </style>
 </head>
 <body style="height:3000px;">
-    
-  
 
     <nav id="menu-principal">
         <a href="index.html" class="menu">Home</a>
@@ -42,8 +66,43 @@
 
     <div class="div-evento">
         <div class="txt-sobreposto">27.10&nbsp;VEM&nbsp;SALTAR&nbsp;CONNOSCO!!</div>
-        <img style="width:100%;" src="imgs/imagem3.jpg" alt="">
+        <img style="width:100%;" src="https://placehold.co/600x400/orange/white" alt="">
     </div>
 
+    <div id="galeria">
+        <div class="card">
+            <img onclick="mudarImagem(this)" data-texto="27.10&nbsp;VEM&nbsp;SALTAR&nbsp;CONNOSCO!!" src="https://placehold.co/600x400/orange/white" alt="">
+            <p>texto</p>
+            <button type="button">ver + info</button>
+        </div>
+        <div class="card">
+            <img onclick="mudarImagem(this)" data-texto="23.12 festa de natal" src="https://placehold.co/300x200/green/white" alt="">
+            <p>texto</p>
+            <button type="button">ver + info</button>
+        </div>
+        <div class="card">
+            <img onclick="mudarImagem(this)" data-texto="12.01&nbsp;ARRANQUE&nbsp;DAS&nbsp;AULAS" src="https://placehold.co/450x300/blue/white" alt="">
+            <p>texto</p>
+            <button type="button">ver + info</button>
+        </div>
+    </div>
+
+
+
+<script>
+    
+    /*mudar a imagem principal  */ 
+    function mudarImagem(elem){
+        let texto = elem.dataset.texto;
+        let src = elem.src;
+
+        let div = document.querySelector('.div-evento');
+        div.querySelector('img').src = src;
+        div.querySelector('.txt-sobreposto').innerHTML = texto;
+        //console.log('teste', src);
+    }
+
+
+</script>
 </body>
 </html>
