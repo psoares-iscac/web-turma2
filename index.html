@@ -11,47 +11,75 @@
             position:relative;
             width:85%;
             height:500px;
-            margin: 2rem auto;
+            margin: 0rem auto;
             overflow: hidden;
             
         }
 
         .txt-sobreposto{
-            position: absolute;
-            top:50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            padding: 2rem;
-            background-color: rgba(128, 128, 128, .8);
-            font-size: 3rem;
-            color:white;
-            text-align: center;
+            display:none;
         }
 
+        /* a partir de zero */
         #galeria{
             display: flex;
             gap: 1rem;
-            /*flex-flow: column;
-            justify-content: space-around;
+            flex-flow: column;
+            /*justify-content: space-around;
             align-items: baseline;*/
             width: 85%;
-            margin: 2rem auto;
+            margin: 0rem auto;
         }
 
         #galeria .card{
-            
+            flex-grow: 1;
             width: 100%;
         }
 
         #galeria .card img{
             width: 100%;
-            
+            height: auto;
         }
 
         #galeria .card button{
             width: 100%;
             padding: 1rem;
         }
+
+        @media(min-width: 768px){
+            #galeria{
+                flex-flow: row;
+            }
+
+            .esconder{
+                display: none;
+            }
+
+            .txt-sobreposto{
+                display: block;
+                position: absolute;
+                top:50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                padding: 2rem;
+                background-color: rgba(128, 128, 128, .8);
+                font-size: 2rem;
+                color:white;
+                text-align: center;
+            }
+        }
+
+        @media(min-width: 1200px){
+            .esconder{
+                display: block;
+            }
+
+            .txt-sobreposto{
+                font-size: 3.5rem;
+            }
+        }
+
+
 
     </style>
 </head>
@@ -71,17 +99,20 @@
 
     <div id="galeria">
         <div class="card">
-            <img onclick="mudarImagem(this)" data-texto="27.10&nbsp;VEM&nbsp;SALTAR&nbsp;CONNOSCO!!" src="https://placehold.co/600x400/orange/white" alt="">
+            <img onclick="mudarImagem(this)" data-texto="27.10&nbsp;VEM&nbsp;SALTAR&nbsp;CONNOSCO!!" 
+            src="https://picsum.photos/300/200?1" alt="">
             <p>texto</p>
             <button type="button">ver + info</button>
         </div>
         <div class="card">
-            <img onclick="mudarImagem(this)" data-texto="23.12 festa de natal" src="https://placehold.co/300x200/green/white" alt="">
+            <img onclick="mudarImagem(this)" data-texto="23.12 festa de natal" 
+            src="https://picsum.photos/600/400?2" alt="">
             <p>texto</p>
             <button type="button">ver + info</button>
         </div>
-        <div class="card">
-            <img onclick="mudarImagem(this)" data-texto="12.01&nbsp;ARRANQUE&nbsp;DAS&nbsp;AULAS" src="https://placehold.co/450x300/blue/white" alt="">
+        <div class="card esconder">
+            <img onclick="mudarImagem(this)" data-texto="12.01&nbsp;ARRANQUE&nbsp;DAS&nbsp;AULAS" 
+            src="https://picsum.photos/900/600?3" alt="">
             <p>texto</p>
             <button type="button">ver + info</button>
         </div>
