@@ -3,3 +3,8 @@
 # Licenciatura em Informática de Gestão
 
 # TURMA 2 - acompanhamento das aulas
+
+
+# LINKS ÚTEIS
+https://picsum.photos/         - gerador de fotos aleatórias
+https://www.svgrepo.com/       - svgs gratuitos 
