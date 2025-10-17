@@ -6,5 +6,5 @@
 
 
 # LINKS ÚTEIS
-https://picsum.photos/         - gerador de fotos aleatórias
+https://picsum.photos/         - gerador de fotos aleatórias <br>
 https://www.svgrepo.com/       - svgs gratuitos 
