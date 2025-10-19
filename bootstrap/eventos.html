@@ -16,14 +16,13 @@
     </nav>
     
 
-    <div class="container">
+    <div class="container position-relative">
         <div class="position-absolute top-50 start-50 translate-middle p-5 bg-success-subtle display-5 ">Fim de semestre de IG</div>
         <img class="img-fluid w-100 h-auto" src="https://picsum.photos/600/300?2" alt="">
     </div>
 
 
-    <p class="display-5 text-center">Galeria de imagens</p>
-
+    <p class="mt-4 display-6 text-center">Galeria de imagens row>col-12</p>
 
     <div class="container p-0">
         <div class="row">
@@ -50,7 +49,32 @@
         </div>
     </div>
 
+    <p class="mt-4 display-6 text-center">Galeria de imagens row.row-cols</p>
 
+    <div class="container p-0">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
+            <div class="col">
+                <img class="img-fluid w-100 h-auto" src="https://picsum.photos/600/300?1" alt="evento 1">
+                <div class="fs-3">29.11 Grande evento</div>
+                <a class="btn btn-outline-dark w-50" href="#">ver mais <i class="bi bi-binoculars"></i></a>
+            </div>
+            <div class="col">
+                <img class="img-fluid w-100 h-auto" src="https://picsum.photos/600/300?4" alt="evento 1">
+                <div class="fs-3">29.11 Grande evento</div>
+                <a class="btn btn-outline-dark w-50" href="#">ver mais <i class="bi bi-binoculars"></i></a>
+            </div>
+            <div class="col">
+                <img class="img-fluid w-100 h-auto" src="https://picsum.photos/600/300?3" alt="evento 1">
+                <div class="fs-3">29.11 Grande evento</div>
+                <a class="btn btn-outline-dark w-50" href="#">ver mais <i class="bi bi-binoculars"></i></a>
+            </div>
+            <div class="d-lg-none d-xl-block col">
+                <img class="img-fluid w-100 h-auto" src="https://picsum.photos/600/300?2" alt="evento 1">
+                <div class="fs-3">29.11 Grande evento</div>
+                <a class="btn btn-outline-dark w-50" href="#">ver mais <i class="bi bi-binoculars"></i></a>
+            </div>
+        </div>
+    </div>
    
     
     <script src="js/bootstrap.bundle.min.js"></script>
