@@ -14,6 +14,8 @@ https://www.svgrepo.com/       - svgs gratuitos
 https://tailwindcss.com/               -site oficial <br>
 https://flowbite.com/                  - components para o tailwind <br>
 https://www.material-tailwind.com/     - components para o tailwind <br>
+https://heroicons.com/                 - icons tailwind<br>
 
 ## BOOTSTRAP 5.3
 https://getbootstrap.com/               -site oficial <br>
+https://icons.getbootstrap.com/         - icons bootstrap<br>
