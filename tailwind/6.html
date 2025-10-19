@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página com Tailwind v4.1</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- NAVBAR -->
+  <nav id="menu-principal" class="mb-3 p-2 text-end">
+    <a href="index.html" class="menu">Home</a>
+    <a href="eventos.html" class="menu">Eventos</a>
+    <a href="contactos.html" class="menu">Sobre Nós</a>
+  </nav>
+
+  <!-- CONTAINER GERAL -->
+  <div class="container mx-auto px-4">
+
+    
+    <div class="relative">
+      <img class="w-full h-auto" src="https://picsum.photos/600/300?2" alt="">
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-5 bg-white text-3xl font-semibold shadow">
+        Fim de semestre de IG
+      </div>
+    </div>
+
+    <!-- TÍTULO -->
+    <p class="text-3xl font-semibold text-center my-8">Galeria de imagens</p>
+
+    <!-- GALERIA -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      
+      <!-- ITEM 1 -->
+      <div class="flex flex-col items-center">
+        <img class="w-full h-auto" src="https://picsum.photos/600/300?1" alt="evento 1">
+        <div class="text-xl mt-2 font-medium">29.11 Grande evento</div>
+        <a class="mt-2 w-1/2 text-center border border-gray-800 text-gray-800 px-3 py-2 hover:bg-gray-800 hover:text-white transition" href="#">
+          ver mais
+          <svg xmlns="http://www.w3.org/2000/svg" class="inline-block w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </a>
+      </div>
+
+      <!-- ITEM 2 -->
+      <div class="flex flex-col items-center">
+        <img class="w-full h-auto" src="https://picsum.photos/600/300?4" alt="evento 2">
+        <div class="text-xl mt-2 font-medium">29.11 Grande evento</div>
+        <a class="mt-2 w-1/2 text-center border border-gray-800 text-gray-800 px-3 py-2 hover:bg-gray-800 hover:text-white transition" href="#">
+          ver mais
+          <svg xmlns="http://www.w3.org/2000/svg" class="inline-block w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </a>
+      </div>
+
+      <!-- ITEM 3 -->
+      <div class="flex flex-col items-center">
+        <img class="w-full h-auto" src="https://picsum.photos/600/300?3" alt="evento 3">
+        <div class="text-xl mt-2 font-medium">29.11 Grande evento</div>
+        <a class="mt-2 w-1/2 text-center border border-gray-800 text-gray-800 px-3 py-2 hover:bg-gray-800 hover:text-white transition" href="#">
+          ver mais
+          <svg xmlns="http://www.w3.org/2000/svg" class="inline-block w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </a>
+      </div>
+
+      <!-- ITEM 4 -->
+      <div class="hidden xl:flex flex-col items-center">
+        <img class="w-full h-auto" src="https://picsum.photos/600/300?2" alt="evento 4">
+        <div class="text-xl mt-2 font-medium">29.11 Grande evento</div>
+        <a class="mt-2 w-1/2 text-center border border-gray-800 text-gray-800 px-3 py-2 hover:bg-gray-800 hover:text-white transition" href="#">
+          ver mais
+          <svg xmlns="http://www.w3.org/2000/svg" class="inline-block w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </a>
+      </div>
+
+    </div>
+
+  </div> <!-- Fim container -->
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página com framewrok Tailwind v4.1</title>
+    <!--<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>-->
+    <script src="js/tailwind4.1.js"></script>
+</head>
+<body>
+    <nav id="menu-principal" class="mb-5 p-4 text-end">
+        <a href="index.html" class="menu">Home</a>
+        <a href="eventos.html" class="menu">Eventos</a>
+        <a href="contactos.html" class="menu">Sobre Nós</a>
+    </nav>
+
+    <div class="container">
+        <div class="relative w-full max-w-3xl mx-auto">
+            <img src="https://picsum.photos/600/300?1" alt="" class="w-full h-auto block">
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div class="bg-black bg-opacity-20 text-white text-2xl font-bold px-4 py-2 rounded">Fim de Semestre IG</div>
+            </div>
+        </div>
+    </div>
+    
+    <p class="text-5xl text-center">Galeria de imagens</p>
+
+
+    <div class="container p-0">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+            <div>
+                <img class="w-full h-48 object-cover" src="https://picsum.photos/600/300?1" alt="evento 1">
+                <div class="mt-2 text-sm font-medium">29.11 Grande evento</div>
+                <a href="#" class="inline-block mt-3 bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2">Ver mais<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+</svg>
+</a>
+            </div>
+            <div>
+                <img class="w-full h-48 object-cover" src="https://picsum.photos/600/300?4" alt="evento 2">
+                <div class="mt-2 text-sm font-medium">30.11 Outro evento</div>
+                <a href="#" class="inline-block mt-3 bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2">Ver mais<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+</svg>
+</a>
+            </div>
+            <div>
+                <img class="w-full h-48 object-cover" src="https://picsum.photos/600/300?3" alt="evento 3">
+                <div class="mt-2 text-sm font-medium">01.12 Evento especial</div>
+                <a href="#" class="inline-block mt-3 bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2">Ver mais<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+</svg>
+</a>
+            </div>
+            <div>  
+                <img class="w-full h-48 object-cover" src="https://picsum.photos/600/300?2" alt="evento 4">
+                <div class="mt-2 text-sm font-medium">02.12 Encerramento</div>
+                <a href="#" class="inline-block mt-3 bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2">Ver mais<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+</svg>
+</a>
+            </div>
+        </div>
+    </div>
+
+    
+</body>
+</html>
