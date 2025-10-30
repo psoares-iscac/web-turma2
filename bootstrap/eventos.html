@@ -3,80 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página com framewrok Bootstrap</title>
+    <title>Web 25.26</title>
+    <link rel="shortcut icon" href="imgs/logo_arco_vermelho.svg">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-icons.min.css">
+    
 </head>
 <body>
 
-    <nav id="menu-principal" class="mb-3 p-2 text-end">
-        <a href="index.html" class="menu">Home</a>
-        <a href="eventos.html" class="menu">Eventos</a>
-        <a href="contactos.html" class="menu">Sobre Nós</a>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img style="max-height: 80px;width: auto;" src="imgs/logo-min.png" alt="" srcset="">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu-principal" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu-principal">
+                <div class="navbar-nav nav-underline ms-auto">
+                    <a class="nav-link" href="index.html">Home</a>
+                    <a class="nav-link active" aria-current="page" href="eventos.html">Eventos</a>
+                    <a class="nav-link" href="contactos.html">Sobre Nós</a>                    
+                </div>
+            </div>
+        </div>
     </nav>
     
-
-    <div class="container position-relative">
-        <div class="position-absolute top-50 start-50 translate-middle p-5 bg-success-subtle display-5 ">Fim de semestre de IG</div>
-        <img class="img-fluid w-100 h-auto" src="https://picsum.photos/600/300?2" alt="">
-    </div>
-
-
-    <p class="mt-4 display-6 text-center">Galeria de imagens row>col-12</p>
-
-    <div class="container p-0">
-        <div class="row">
-            <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                <img class="img-fluid w-100 h-auto" src="https://picsum.photos/600/300?1" alt="evento 1">
-                <div class="fs-3">29.11 Grande evento</div>
-                <a class="btn btn-outline-dark w-50" href="#">ver mais <i class="bi bi-binoculars"></i></a>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                <img class="img-fluid w-100 h-auto" src="https://picsum.photos/600/300?4" alt="evento 1">
-                <div class="fs-3">29.11 Grande evento</div>
-                <a class="btn btn-outline-dark w-50" href="#">ver mais <i class="bi bi-binoculars"></i></a>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                <img class="img-fluid w-100 h-auto" src="https://picsum.photos/600/300?3" alt="evento 1">
-                <div class="fs-3">29.11 Grande evento</div>
-                <a class="btn btn-outline-dark w-50" href="#">ver mais <i class="bi bi-binoculars"></i></a>
-            </div>
-            <div class="d-lg-none d-xl-block col-12 col-md-6 col-lg-4 col-xl-3">
-                <img class="img-fluid w-100 h-auto" src="https://picsum.photos/600/300?2" alt="evento 1">
-                <div class="fs-3">29.11 Grande evento</div>
-                <a class="btn btn-outline-dark w-50" href="#">ver mais <i class="bi bi-binoculars"></i></a>
-            </div>
+    <!-- evento em destaque -->
+    <div id="evento-destaque" class="position-relative container p-0 bg-info-subtle">
+        <img style="max-height: 350px;width: 100%;" class="object-fit-cover" src="imgs/imagem3.jpg" alt="evento em destaque"> 
+        <div id="txt-evento-destaque" class="d-none d-lg-block position-absolute top-50 start-50 translate-middle p-5 bg-success opacity-50 text-white  text-nowrap display-3 fw-bold">
+            29.11 Festa de fim de semestre
         </div>
     </div>
 
-    <p class="mt-4 display-6 text-center">Galeria de imagens row.row-cols</p>
-
-    <div class="container p-0">
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
-            <div class="col">
-                <img class="img-fluid w-100 h-auto" src="https://picsum.photos/600/300?1" alt="evento 1">
-                <div class="fs-3">29.11 Grande evento</div>
-                <a class="btn btn-outline-dark w-50" href="#">ver mais <i class="bi bi-binoculars"></i></a>
-            </div>
-            <div class="col">
-                <img class="img-fluid w-100 h-auto" src="https://picsum.photos/600/300?4" alt="evento 1">
-                <div class="fs-3">29.11 Grande evento</div>
-                <a class="btn btn-outline-dark w-50" href="#">ver mais <i class="bi bi-binoculars"></i></a>
-            </div>
-            <div class="col">
-                <img class="img-fluid w-100 h-auto" src="https://picsum.photos/600/300?3" alt="evento 1">
-                <div class="fs-3">29.11 Grande evento</div>
-                <a class="btn btn-outline-dark w-50" href="#">ver mais <i class="bi bi-binoculars"></i></a>
-            </div>
-            <div class="d-lg-none d-xl-block col">
-                <img class="img-fluid w-100 h-auto" src="https://picsum.photos/600/300?2" alt="evento 1">
-                <div class="fs-3">29.11 Grande evento</div>
-                <a class="btn btn-outline-dark w-50" href="#">ver mais <i class="bi bi-binoculars"></i></a>
-            </div>
-        </div>
-    </div>
-   
     
+    <!-- grelha de eventos -->
+    <div class="container mt-5 p-0">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
+            <div class="col">
+                <img class="w-100" src="imgs/imagem3_min.jpg" alt="evento 3">
+                <div class="fs-5 fw-light">29.11</div>
+                <div class="mb-1 fs-4">Festa de fim de semestre</div>
+                <a class="btn btn-outline-success" href="evento.html?id=3">
+                    Ver mais <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+            <div class="col">
+                <img class="w-100" src="imgs/imagem1_min.jpg" alt="evento 1">
+                <div class="fs-5 fw-light">31.12</div>
+                <div class="mb-1 fs-4">Bem vindo 2026!</div>
+                <a class="btn btn-outline-success" href="evento.html?id=1">
+                    Ver mais <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+            <div class="col">
+                <img class="w-100" src="imgs/imagem2_min.jpg" alt="evento 2">
+                <div class="fs-5 fw-light">05.04</div>
+                <div class="mb-1 fs-4">Páscoa Festiva</div>
+                <a class="btn btn-outline-success" href="evento.html?id=2">
+                    Ver mais <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+            <div class="col">
+                <img class="w-100" src="imgs/imagem3_min.jpg" alt="evento 4">
+                <div class="fs-5 fw-light">fevereiro</div>
+                <div class="mb-1 fs-4">Festividades várias</div>
+                <a class="btn btn-outline-success" href="evento.html?id=4">
+                    Ver mais <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+            
+        </div>
+    </div>
+
+
     <script src="js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
