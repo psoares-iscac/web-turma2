@@ -1,8 +1,0 @@
-| Função              | Cor             | RGB                  | Descrição                                             |
-| ------------------- | --------------- | -------------------- | ----------------------------------------------------- |
-| **Primária**        | Verde principal | `rgb(76, 175, 80)`   | O verde padrão (#4CAF50) — moderno e equilibrado.     |
-| **Secundária**      | Verde escuro    | `rgb(56, 142, 60)`   | Ideal para botões, títulos ou detalhes contrastantes. |
-| **Claro de apoio**  | Verde claro     | `rgb(200, 230, 201)` | Para fundos suaves e seções leves.                    |
-| **Neutro de fundo** | Cinza-claro     | `rgb(245, 245, 245)` | Mantém o layout limpo e minimalista.                  |
-| **Texto principal** | Cinza-escuro    | `rgb(33, 33, 33)`    | Boa legibilidade sobre fundos claros.                 |
-| **Realce**          | Verde-limão     | `rgb(139, 195, 74)`  | Pode usar para hover, ícones ou pequenos destaques.   |
