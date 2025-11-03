@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web 25.26</title>
+    <link rel="shortcut icon" href="imgs/logo_arco_vermelho.svg">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-icons.min.css">
+    
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img style="max-height: 80px;width: auto;" src="imgs/logo-min.png" alt="" srcset="">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu-principal" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu-principal">
+                <div class="navbar-nav nav-underline ms-auto">
+                    <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                    <a class="nav-link" href="eventos.html">Eventos</a>
+                    <a class="nav-link" href="contactos.html">Sobre Nós</a>                    
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+   
+    <div class="mx-auto mt-5" style="width: 400px;">
+        <form action="trataInscricao.php" method="GET">
+
+            <div class="mb-2">
+                <label for="">Email</label>
+                <input id="f-email" name="fEmail" type="email" class="form-control" placeholder="introduza o seu email" required>
+            </div>
+            <div class="mb-2">
+                <label for="">Nome</label>
+                <input id="f-nome" name="fNomew" type="text" class="form-control" placeholder="introduza o seu nome" >
+            </div>
+             <div class="mb-2">
+                <label for="">Telefone</label>
+                <input id="f-tel" name="fTel" type="text" class="form-control" placeholder="introduza o seu telefone" >
+            </div>
+             <div class="mb-2">
+                <label for="">Dia desejado</label>
+                <input id="f-dia" name="fDia" type="date" class="form-control">
+            </div>
+            
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="f-socio" name="fSocio" >
+                <label class="form-check-label" for="f-socio">
+                    Sócio
+                </label>
+            </div>
+            
+            <div>
+                <button type="submit" class="btn btn-success">Inscrever</button>
+            </div>
+
+
+
+        </form>
+    </div>
+
+
+    
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
