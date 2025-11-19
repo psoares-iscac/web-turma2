@@ -5,7 +5,7 @@ if(isset($_GET['evento'])){
     header('Location:index.php');
     exit;
 }
-
+require('includes/connection.php');
 ?>
 <!DOCTYPE html>
 <html lang="pt-pt">
@@ -22,11 +22,34 @@ if(isset($_GET['evento'])){
     require('includes/nav.php');
     ?>
     
+
+    <?php 
+    $sql = 'SELECT * FROM eventos WHERE id = :id';
+    $stmt = $dbh->prepare($sql);
+    $stmt->bindValue(':id', $eventoId);
+    $stmt->execute();
+
+    if(!$stmt || $stmt->rowCount() != 1){
+        #echo 'erro';
+        header('Location: index.php');
+        exit;
+    }
+
+    $evento = $stmt->fetchObject();
+    echo $nome   = $evento->nome;
+    $data   = $evento->data;
+    echo $img    = $evento->imagem;
+    $info   = $evento->informacao;
+
+    ?>
+
+
+
      <!-- Formulário de inscrição em evento -->
     <form action="trataInscricao.php" method="get">
 
         <div class="space-y-4 mx-auto w-[400px] p-4 border border-gray-200">
-            <div>Evento <?= $eventoId ?></div>
+            <div><?= $nome ?></div>
             <div class="">
             <label for="f-email" class="block text-sm/6 font-medium text-gray-900">Email</label>
             <div class="mt-2">
