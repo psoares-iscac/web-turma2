@@ -107,7 +107,9 @@ $info   = $evento->informacao;
 
         </form>
 
-        <div class="mt-4 text-right text-3xl">Inscritos: <span id="total-inscritos" data-eventoid="<?= $eventoId ?>">7</span></div>
+        <div class="mt-4 text-right text-3xl">Inscritos: 
+            <span id="total-inscritos" data-eventoid="<?= $eventoId ?>">2</span>
+        </div>
     </div>
 </div>
 
@@ -118,7 +120,146 @@ $info   = $evento->informacao;
    
 
 <script>
-    const totalInscritos = document.getElementById('total-inscritos');
+    const totalInscritos = document.getElementById('total-inscritos'); // span
+    const eventoId = totalInscritos.dataset.eventoid;
+
+
+    /* versão 1 - fetch.then com JSON*/ 
+    function atualizarInscritos1(){
+
+        fetch("ajax/totalInscritos1.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ id: eventoId })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log("Número de inscritos:", data.total);
+            totalInscritos.innerHTML = data.total;
+        })
+        .catch(err => console.error("Erro:", err));
+
+    }
+
+    /* versão 2 - fetch.then com FORMDATA */ 
+    function atualizarInscritos2(){
+        const url = 'ajax/totalInscritos2.php';
+        
+        const dados = new FormData();
+        dados.append("id", eventoId);
+        
+
+        fetch(url, {
+            method: 'POST',            
+            body: dados
+        })
+        .then(response => {
+            if(!response.ok)
+                throw new Error('teste de erro');
+            return response.json();
+        })
+        .then(data => {
+            console.log(data.total);
+            totalInscritos.innerHTML = data.total;
+        })
+        .catch(err => console.error("Erro:", err));
+    } 
+
+    /* versão 3 - fetch.then, method GET */ 
+    function atualizarInscritos3(){
+        const url = `ajax/totalInscritos3.php?id=${eventoId}`;
+
+        fetch(url)
+        .then(response => {
+            if(!response.ok)
+                throw new Error('teste de erro');
+            return response.json();
+        })
+        .then(data => {
+            console.log(data.total);
+            totalInscritos.innerHTML = data.total;
+        })
+        .catch(err => console.error("Erro:", err));
+    } 
+
+    /* versão 4 - await fetch, method GET, */ 
+    async function atualizarInscritos4() {
+        const url = `ajax/totalInscritos3.php?id=${eventoId}`;
+
+        try {
+            const response = await fetch(url, {
+                method: "GET",
+            });
+
+            if (!response.ok) {
+                throw new Error(`Erro HTTP: ${response.status}`);
+            }
+
+            const data = await response.json();
+            console.log("Número de inscritos:", data.total);
+            totalInscritos.innerHTML = data.total;
+            //return data;
+
+        } catch (error) {
+            console.error("Erro na requisição GET:", error);
+        }
+    }
+
+    /* versão 5 - await fetch, method POST com JSON */
+    async function atualizarInscritos5() {
+        try {
+            const response = await fetch("ajax/totalInscritos1.php", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify({ id: eventoId })
+            });
+
+            if (!response.ok) throw new Error(`Erro HTTP: ${response.status}`);
+
+            const data = await response.json();
+            console.log("Inscritos (JSON):", data.total);
+            totalInscritos.innerHTML = data.total;
+            return data;
+
+        } catch (error) {
+            console.error("Erro na requisição JSON:", error);
+        }
+    }
+
+
+    /* versão 6 - await fetch, method POST com FORMDATA */
+    async function atualizarInscritos6() {
+        const formData = new FormData();
+        formData.append("id", eventoId);
+
+        try {
+            const response = await fetch("ajax/totalInscritos2.php", {
+                method: "POST",
+                body: formData
+            });
+
+            if (!response.ok) throw new Error(`Erro HTTP: ${response.status}`);
+
+            const data = await response.json();
+            console.log("Inscritos (FormData):", data.total);
+            totalInscritos.innerHTML = data.total;
+            return data;
+
+        } catch (error) {
+            console.error("Erro na requisição FormData:", error);
+        }
+    }
+
+    /* ALTERAR PARA A FUNÇÃO PRETENDIDA */
+    atualizarInscritos6()
+    
+    //setInterval(atualizarInscritos?, 5000);
+
 </script>
 </body>
 </html>
