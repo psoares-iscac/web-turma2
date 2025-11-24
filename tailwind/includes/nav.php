@@ -26,6 +26,15 @@
                     hover:after:w-full hover:text-black">
                 A Equipa
             </a>
+
+            <a href="login.php" 
+                class="relative text-gray-700 font-medium transition-all duration-300 
+                    after:content-[''] after:absolute after:left-0 after:bottom-[-12px] 
+                    after:w-0 after:h-[2px] after:bg-black after:transition-all after:duration-300 
+                    hover:after:w-full hover:text-black">
+                Login
+            </a>
+
         </div>
         <!-- Hamburger mobile -->
         <div class="flex items-center md:hidden">
