@@ -27,6 +27,9 @@
                 A Equipa
             </a>
 
+            <?php 
+            if($_SESSION['ligado'] === false){
+            ?>
             <a href="login.php" 
                 class="relative text-gray-700 font-medium transition-all duration-300 
                     after:content-[''] after:absolute after:left-0 after:bottom-[-12px] 
@@ -34,6 +37,9 @@
                     hover:after:w-full hover:text-black">
                 Login
             </a>
+            <?php 
+            }else echo $_SESSION['nome']; 
+            ?>
 
         </div>
         <!-- Hamburger mobile -->
