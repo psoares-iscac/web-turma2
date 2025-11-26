@@ -1,10 +1,12 @@
 <?php
+session_start();
 if(isset($_GET['evento'])){
     $eventoId = $_GET['evento'];
 }else{
     header('Location:index.html');
     exit;
 }
+
 require('includes/connection.php');
 ?>
 <!DOCTYPE html>
@@ -38,7 +40,7 @@ if(!$stmt || $stmt->rowCount() != 1){
 
 $evento = $stmt->fetchObject();
 $nome   = $evento->nome;
-$data   = $evento->dataEvento;
+$data   = $evento->data;
 $imagem = $evento->imagem;
 $info   = $evento->informacao;
 ?>

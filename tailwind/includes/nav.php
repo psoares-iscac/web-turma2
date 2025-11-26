@@ -28,7 +28,7 @@
             </a>
 
             <?php 
-            if($_SESSION['ligado'] === false){
+            if(!isset($_SESSION['ligado']) || $_SESSION['ligado'] === false){
             ?>
             <a href="login.php" 
                 class="relative text-gray-700 font-medium transition-all duration-300 
@@ -38,7 +38,28 @@
                 Login
             </a>
             <?php 
-            }else echo $_SESSION['nome']; 
+            }else{
+            ?>
+            <div class="relative group inline-block">
+        
+                <div class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold cursor-pointer select-none transition hover:bg-blue-700">
+                    <?= $_SESSION['iniciais']; ?>
+                </div>
+
+                <div class="absolute right-0 mt-2 w-32 bg-white rounded-md shadow-lg py-2 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right">
+                    
+                    <div class="px-4 py-2 text-xs text-gray-500 border-b border-gray-100">
+                        Olá, <?= $_SESSION['nome'] ?>
+                    </div>
+
+                    <a href="auth/logout.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-red-600">
+                        Sair (Logout)
+                    </a>
+                </div>
+
+            </div>
+            <?php
+            }
             ?>
 
         </div>
