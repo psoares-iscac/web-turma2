@@ -58,21 +58,32 @@ $info   = $evento->informacao;
     <div class="w-1/3">
         <div class="mt-6 mb-4 font-semibold text-2xl">Inscreva-se</div>
         <!-- Formulário de inscrição em evento -->
-        <form action="trataInscricao.php" method="get">
+         <?php  
+         // dados da autenticação para preenchimento automático do formulário
+         if($_SESSION['ligado'] == true){
+            $nome = $_SESSION['nome'];
+            $email = $_SESSION['email'];
+         }else{
+            $nome = '';
+            $email = '';
+         }
 
+         ?>
+        <form id="form-inscricao" method="post">
+            <input type="hidden" name="fEvento" value="<?= $eventoId ?>">
             <div class="space-y-4  p-4 border border-gray-600">
             
                 <div class="">
                 <label for="f-email" class="block text-sm/6 font-medium text-gray-900">Email</label>
                 <div class="mt-2">
-                    <input id="f-email" type="email" name="fEmail" placeholder="introduza o seu email" autocomplete="email" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
+                    <input required value="<?= $email ?>" id="f-email" type="email" name="fEmail" placeholder="introduza o seu email" autocomplete="email" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                 </div>
                 </div>
                 
                 <div class="">
                 <label for="f-nome" class="block text-sm/6 font-medium text-gray-900">Nome</label>
                 <div class="mt-2">
-                    <input id="f-nome" type="text" name="fNome" placeholder="introduza o seu nome" autocomplete="name" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
+                    <input required value="<?= $nome ?>" id="f-nome" type="text" name="fNome" placeholder="introduza o seu nome" autocomplete="name" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                 </div>
                 </div>
                 
@@ -86,7 +97,7 @@ $info   = $evento->informacao;
                 <div class="flex gap-3">
                     <div class="flex h-6 shrink-0 items-center">
                         <div class="group grid size-4 grid-cols-1">
-                            <input id="f-socio" type="checkbox" name="fSocio" checked aria-describedby="comments-description" class="col-start-1 row-start-1 appearance-none rounded-sm border border-gray-300 bg-white checked:border-indigo-600 checked:bg-indigo-600 indeterminate:border-indigo-600 indeterminate:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto" />
+                            <input id="f-socio" type="checkbox" name="fSocio" aria-describedby="comments-description" class="col-start-1 row-start-1 appearance-none rounded-sm border border-gray-300 bg-white checked:border-indigo-600 checked:bg-indigo-600 indeterminate:border-indigo-600 indeterminate:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto" />
                             <svg viewBox="0 0 14 14" fill="none" class="pointer-events-none col-start-1 row-start-1 size-3.5 self-center justify-self-center stroke-white group-has-disabled:stroke-gray-950/25">
                             <path d="M3 8L6 11L11 3.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-0 group-has-checked:opacity-100" />
                             <path d="M3 7H11" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-0 group-has-indeterminate:opacity-100" />
@@ -108,6 +119,8 @@ $info   = $evento->informacao;
 
         </form>
 
+        <div id="mensagem" class="hidden"></div>
+
         <div class="mt-4 text-right text-3xl">Inscritos: 
             <span id="total-inscritos" data-eventoid="<?= $eventoId ?>">2</span>
         </div>
@@ -119,7 +132,68 @@ $info   = $evento->informacao;
 
 
    
+<script>
+    document.getElementById("form-inscricao").addEventListener("submit", async function (e) {
+        e.preventDefault(); // impede envio normal - submit
 
+        const form = e.target;
+        /* formData com todos os elementos do formulario, identificação name */
+        const formData = new FormData(form);
+        const msgDiv = document.getElementById("mensagem");
+
+        // ESCONDE FORMULÁRIO IMEDIATAMENTE
+        form.classList.add("hidden");
+
+        // LIMPA A MENSAGEM
+        msgDiv.classList.add("hidden");
+        msgDiv.innerHTML = "";
+
+        try {
+            const response = await fetch('ajax/trataInscricao.php', {
+                method: "POST",
+                body: formData
+            });
+
+            // Se o PHP enviar JSON:
+            const result = await response.json()
+
+            console.log("Resposta do servidor:", result.estado);
+
+            // SUCESSO
+            if (result.status === "ok") {
+
+                msgDiv.classList.remove("hidden");
+                msgDiv.innerHTML = `
+                    <div class="mt-6 p-6 bg-green-100 border border-green-300 text-green-800 rounded-xl shadow-md">
+                        <h2 class="text-xl font-semibold mb-2">Inscrição realizada com sucesso!</h2>
+                        <p class="mb-1">Obrigado, <strong>${result.dados.nome}</strong>.</p>
+                        <p class="mb-1">Confirmámos a receção da sua inscrição.</p>
+                        <p>Enviaremos informações para <strong>${result.dados.email}</strong>.</p>
+                    </div>
+                `;
+            } 
+            // ERRO DO SERVIDOR (VALIDAÇÃO)
+            else {
+
+                msgDiv.classList.remove("hidden");
+                msgDiv.innerHTML = `
+                    <div class="mt-6 p-6 bg-red-100 border border-red-300 text-red-800 rounded-xl shadow-md">
+                        <h2 class="text-lg font-semibold mb-2">Ocorreu um erro</h2>
+                        <p>${result.mensagem}</p>
+                    </div>
+                `;
+
+                // REEXIBE O FORMULÁRIO PARA CORRIGIR
+                form.classList.remove("hidden");
+            }
+
+        } catch (error) {
+            console.error("Erro no envio:", error);
+            alert("Erro ao enviar os dados.");
+        }
+
+    });
+</script>
 <script>
     const totalInscritos = document.getElementById('total-inscritos'); // span
     const eventoId = totalInscritos.dataset.eventoid;
@@ -259,7 +333,9 @@ $info   = $evento->informacao;
     /* ALTERAR PARA A FUNÇÃO PRETENDIDA */
     atualizarInscritos6()
     
-    //setInterval(atualizarInscritos?, 5000);
+    setInterval(() => {
+        atualizarInscritos6()
+    }, 10000);
 
 </script>
 </body>

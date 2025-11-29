@@ -22,14 +22,47 @@ if (!isset($_POST['csrf_token']) ||
     exit;
 }
 
-# vou buscar os dados, faço validacoes
-# ###############
+# obter o email e efetuar as devidas validações
+echo $email = isset($_POST['email']) ? $_POST['email']: null;
+
+if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $valido = true;
+    /* verificar se o domínio existe */
+    list($utilizador, $dominio) = explode("@", $email);
+    
+    if (checkdnsrr($dominio, "MX")) {
+        #echo "E-mail válido e domínio existe!";
+    } else {
+        #echo "E-mail válido, mas domínio NÃO existe.";
+    }
+} else {
+    $valido = false;
+}
+/* 
+exemplo de validação com expressões regulares 
+
+regex = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/";
+
+if (preg_match($regex, $email)) {
+    echo "E-mail válido!";
+} else {
+    echo "E-mail inválido!";
+}
+*/
 
 
-#ligado
-$_SESSION['ligado'] = true;
-$_SESSION['nome'] = 'paulo soares';
-$_SESSION['iniciais'] = 'PS';
+if($valido){
+    # autenticado corretamente
+    $_SESSION['ligado'] = true;
+    $_SESSION['email'] = 'psoares@iscac.pt';
+    $_SESSION['nome'] = 'paulo soares';
+    $_SESSION['iniciais'] = 'PS';
+    header('Location:../index.php');
+}else {
+    $_SESSION['ligado'] = false;
+    unset($_SESSION['nome']);
+    unset($_SESSION['iniciais']);
+    header('Location:../login.php');
+}
 
-header('Location:../index.php');
 exit;
