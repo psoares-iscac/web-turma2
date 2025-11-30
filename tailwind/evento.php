@@ -46,7 +46,7 @@ $info   = $evento->informacao;
 
 <div class="max-w-7xl mx-auto flex">
     <div class="w-2/3">
-        <div><img class="w-full h-auto" src="imgs/<?=  $imagem ?> ?>" alt=""></div>
+        <div><img class="w-full h-auto" src="imgs/eventos/<?=  $imagem ?> ?>" alt=""></div>
         <div class="mt-3 text-2xl font-semibold"><?= $nome ?></div>
         <div class="font-light mt-2 mb-2"><?= $data ?></div>
         <div><?= $info ?></div>
@@ -60,7 +60,7 @@ $info   = $evento->informacao;
         <!-- Formulário de inscrição em evento -->
          <?php  
          // dados da autenticação para preenchimento automático do formulário
-         if($_SESSION['ligado'] == true){
+         if(isset($_SESSION['ligado']) && $_SESSION['ligado'] == true){
             $nome = $_SESSION['nome'];
             $email = $_SESSION['email'];
          }else{
