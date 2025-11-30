@@ -31,14 +31,9 @@
                 <span class="text-gray-500 hidden md:block">Bem-vindo, Admin</span>
             </header>
 
+            <!-- parte a ser preenchda par cada págin diferente -->
             <main class="flex-1 overflow-x-hidden overflow-y-auto p-6">
-                <h2 class="text-3xl font-extrabold text-gray-800 mb-8">Visão Geral</h2>
-                <div class="md:hidden bg-white p-6 rounded-xl shadow-xl">
-                    <p class="text-gray-600">Clique no ícone de hambúrguer ou na área escura para fechar o menu.</p>
-                </div>
-                <div class="hidden md:block bg-white p-6 rounded-xl shadow-xl">
-                    <p class="text-gray-600">Exemplos de interfaces para edição de dados.</p>
-                </div>
+                
             </main>
         </div>
     </div>
