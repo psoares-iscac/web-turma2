@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+
+        #equipa{
+            display: flex;
+            height: 200px;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .caixa{
+            flex-grow: 1;
+            flex-shrink: 1;
+            flex-basis: 200px;
+            /*flex:1 1 200px;*/
+            border:1px solid green;
+        }
+    </style>
+</head>
+<body>
+    
+<div id="equipa">
+    <div class="caixa">caixa 1</div>
+    <div class="caixa">caixa 2</div>
+    <div class="caixa" style="flex-grow: 2;align-self: baseline;">caixa 3</div>
+    <div class="caixa">caixa 4</div>
+</div>
+
+
+</body>
+</html>
