@@ -1,0 +1,20 @@
+
+
+#equipa{
+    display: flex;
+    justify-content: space-around;
+    gap:10px
+}
+#equipa .card{
+    flex: 0 0 200px;
+    overflow: hidden;
+}
+#equipa .card img{
+    width: 100%;
+    display: block;
+    transform: scale(1.1); 
+}
+#equipa .card div{
+    font-size: 1.2rem;
+    padding-left: 20px;
+}
