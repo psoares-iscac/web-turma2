@@ -1,0 +1,538 @@
+/* =========================================================
+   ESTILOS DO SITE "SISTEMA SOLAR"
+   Abordagem: MOBILE FIRST
+   -> Escrevemos primeiro os estilos para ecrãs pequenos.
+   -> Depois, com @media (min-width: ...), acrescentamos
+      ajustes para ecrãs maiores.
+   (Esta é exatamente a lógica do Tailwind: md:, lg:, ...)
+   ========================================================= */
+
+
+/* ---------- 1. VARIÁVEIS (cores, espaçamentos) ----------
+   Equivalem ao "tema" que mais tarde se configura no Tailwind. */
+:root {
+  --cor-fundo: #0b1020;
+  --cor-superficie: #161d33;
+  --cor-texto: #e6e9f2;
+  --cor-texto-suave: #a3abc2;
+  --cor-destaque: #ff8a3d;      /* laranja "solar" */
+  --cor-destaque-escura: #e06a1c;
+  --cor-borda: #2a3352;
+
+  --raio: 12px;                 /* cantos arredondados */
+  --largura-max: 1100px;        /* largura máxima do conteúdo */
+  --fonte: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+
+/* ---------- 2. RESET BÁSICO ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;       /* padding e border contam na largura */
+}
+
+body {
+  margin: 0;
+  font-family: var(--fonte);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--cor-texto);
+  background-color: var(--cor-fundo);
+}
+
+/* Imagens responsivas: nunca ultrapassam o contentor */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+h1, h2, h3 {
+  line-height: 1.2;
+  margin-top: 0;
+}
+
+/* Tamanho de letra fluido: clamp(mínimo, ideal, máximo) */
+h1 { font-size: clamp(1.8rem, 5vw, 3rem); }
+h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); }
+
+a {
+  color: var(--cor-destaque);
+}
+
+a:hover,
+a:focus {
+  color: #ffb27a;
+}
+
+html {
+  scroll-behavior: smooth;      /* deslocamento suave nas âncoras (#) */
+}
+
+
+/* ---------- 3. CONTENTOR ----------
+   Centra o conteúdo e limita a largura. */
+.contentor {
+  width: 100%;
+  max-width: var(--largura-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+
+/* ---------- 4. CABEÇALHO E MENU ---------- */
+.cabecalho {
+  background-color: var(--cor-superficie);
+  border-bottom: 1px solid var(--cor-borda);
+  position: sticky;             /* fica preso no topo ao fazer scroll */
+  top: 0;
+  z-index: 10;
+}
+
+.cabecalho__interior {
+  display: flex;
+  flex-direction: column;       /* telemóvel: logo em cima, menu em baixo */
+  align-items: center;
+  gap: 0.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--cor-texto);
+  text-decoration: none;
+}
+
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1rem;
+}
+
+.menu__link {
+  color: var(--cor-texto-suave);
+  text-decoration: none;
+  padding: 0.25rem 0;
+  border-bottom: 2px solid transparent;
+}
+
+.menu__link:hover,
+.menu__link--ativo {
+  color: var(--cor-texto);
+  border-bottom-color: var(--cor-destaque);
+}
+
+
+/* ---------- 5. COMPONENTES REUTILIZÁVEIS ---------- */
+.etiqueta {
+  display: inline-block;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--cor-destaque);
+  margin: 0 0 0.5rem;
+}
+
+.botao {
+  display: inline-block;
+  background-color: var(--cor-destaque);
+  color: #1a1a1a;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--raio);
+  transition: background-color 0.2s;
+}
+
+.botao:hover,
+.botao:focus {
+  background-color: var(--cor-destaque-escura);
+  color: #fff;
+}
+
+.botao--largo {
+  display: block;
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+
+/* ---------- 6. HERO (página inicial) ---------- */
+.hero {
+  padding: 3rem 0;
+  background: radial-gradient(circle at 80% 30%, #2a1f3d, var(--cor-fundo) 60%);
+}
+
+.hero__grelha {
+  display: grid;
+  grid-template-columns: 1fr;   /* telemóvel: 1 coluna */
+  gap: 2rem;
+  align-items: center;
+}
+
+.hero__texto p {
+  color: var(--cor-texto-suave);
+  max-width: 55ch;              /* linhas com no máximo ~55 caracteres */
+}
+
+.hero__imagem {
+  width: 70%;
+  max-width: 360px;
+  margin: 0 auto;
+  order: -1;                    /* no telemóvel a imagem aparece primeiro */
+}
+
+
+/* ---------- 7. SECÇÕES ---------- */
+.seccao {
+  padding: 3rem 0;
+}
+
+.seccao__titulo {
+  text-align: center;
+}
+
+.seccao__intro {
+  text-align: center;
+  color: var(--cor-texto-suave);
+  max-width: 60ch;
+  margin: 0 auto 2rem;
+}
+
+.seccao--destaque {
+  background-color: var(--cor-superficie);
+}
+
+.citacao {
+  margin: 0;
+  text-align: center;
+  font-size: 1.25rem;
+  font-style: italic;
+}
+
+.citacao cite {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--cor-texto-suave);
+}
+
+
+/* ---------- 7b. NÚMEROS COM ÍCONES SVG ---------- */
+.grelha-numeros {
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);   /* telemóvel: 2 colunas */
+  gap: 1.5rem;
+}
+
+.numero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.25rem;
+}
+
+/* O tamanho e a cor do ícone vêm do CSS.
+   Como o SVG usa stroke="currentColor", basta mudar "color". */
+.icone {
+  width: 3rem;
+  height: 3rem;
+  color: var(--cor-destaque);
+  margin-bottom: 0.5rem;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.numero:hover .icone {
+  color: #ffd27a;                /* muda a cor do ícone sem tocar no SVG */
+  transform: scale(1.15);
+}
+
+.numero__valor {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.numero__legenda {
+  font-size: 0.9rem;
+  color: var(--cor-texto-suave);
+}
+
+
+/* ---------- 8. GRELHA DE CARTÕES ---------- */
+.grelha-cartoes {
+  display: grid;
+  grid-template-columns: 1fr;   /* telemóvel: 1 coluna */
+  gap: 1.5rem;
+}
+
+.cartao {
+  background-color: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s;
+}
+
+.cartao:hover {
+  transform: translateY(-4px);
+}
+
+.cartao__imagem {
+  width: 100%;
+  aspect-ratio: 1 / 1;          /* imagem sempre quadrada */
+  object-fit: cover;
+  background-color: #0e1428;
+  padding: 1.5rem;
+}
+
+/* Variante para fotografias: sem margem interior, a foto ocupa o espaço todo */
+.cartao__imagem--foto {
+  padding: 0;
+  background-color: #000;
+}
+
+.cartao__corpo {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;                 /* todos os cartões ficam com a mesma altura */
+}
+
+.cartao__corpo p {
+  color: var(--cor-texto-suave);
+  flex-grow: 1;                 /* empurra o link para o fundo do cartão */
+}
+
+.cartao__link {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+
+/* ---------- 9. PÁGINA DE ARTIGO (Marte) ---------- */
+.trilho {
+  padding: 1rem 0;
+  font-size: 0.9rem;
+  color: var(--cor-texto-suave);
+}
+
+.layout-artigo {
+  display: grid;
+  grid-template-columns: 1fr;   /* telemóvel: artigo e lateral empilhados */
+  gap: 2rem;
+  padding-bottom: 3rem;
+}
+
+.artigo section {
+  margin-top: 2rem;
+  scroll-margin-top: 6rem;      /* evita que o título fique tapado pelo cabeçalho fixo */
+}
+
+.figura {
+  margin: 1.5rem 0;
+}
+
+.figura img {
+  width: 100%;
+  border-radius: var(--raio);
+}
+
+.figura img {
+  aspect-ratio: 4 / 3;            /* corta a foto quadrada num retângulo */
+  object-fit: cover;              /* preenche sem deformar */
+  object-position: center 75%;    /* escolhe que parte da foto fica visível */
+}
+
+.figura figcaption {
+  font-size: 0.85rem;
+  color: var(--cor-texto-suave);
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+.figura figcaption small,
+.credito {
+  display: block;
+  font-size: 0.75rem;
+  opacity: 0.8;
+  margin-top: 0.25rem;
+}
+
+.credito {
+  text-align: center;
+  color: var(--cor-texto-suave);
+  margin: 1rem 0 0;
+}
+
+.indice {
+  background-color: var(--cor-superficie);
+  border-left: 4px solid var(--cor-destaque);
+  border-radius: var(--raio);
+  padding: 1rem 1.5rem;
+}
+
+.indice h2 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.indice ol {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.lateral {
+  background-color: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: 1.5rem;
+  align-self: start;            /* não estica até à altura do artigo */
+}
+
+.lateral__imagem {
+  width: 180px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;           /* recorta a foto em círculo */
+}
+
+.lateral h2 {
+  font-size: 1.25rem;
+  text-align: center;
+}
+
+.tabela-wrapper {
+  overflow-x: auto;             /* se a tabela não couber, faz scroll lateral */
+}
+
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.tabela th,
+.tabela td {
+  padding: 0.6rem 0.5rem;
+  border-bottom: 1px solid var(--cor-borda);
+  text-align: left;
+}
+
+.tabela th {
+  color: var(--cor-texto-suave);
+  font-weight: 500;
+}
+
+/* Ícone pequeno alinhado com o texto */
+.tabela__icone {
+  display: inline-block;
+  width: 1.1rem;
+  height: 1.1rem;
+  vertical-align: -0.2rem;
+  margin-right: 0.35rem;
+}
+
+
+/* ---------- 10. RODAPÉ ---------- */
+.rodape {
+  background-color: var(--cor-superficie);
+  border-top: 1px solid var(--cor-borda);
+  padding: 1.5rem 0;
+  font-size: 0.9rem;
+  color: var(--cor-texto-suave);
+}
+
+.rodape__interior {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.rodape__interior p {
+  margin: 0;
+}
+
+.rodape__links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;              /* os links passam para a linha seguinte se faltar espaço */
+  justify-content: center;
+  gap: 1rem;
+}
+
+
+/* =========================================================
+   MEDIA QUERIES (pontos de quebra)
+   Os valores coincidem com os do Tailwind:
+     sm = 640px · md = 768px · lg = 1024px
+   ========================================================= */
+
+/* ---- sm: telemóveis grandes / tablets pequenos ---- */
+@media (min-width: 640px) {
+  .grelha-cartoes {
+    grid-template-columns: repeat(2, 1fr);   /* 2 colunas */
+  }
+}
+
+/* ---- md: tablets ---- */
+@media (min-width: 768px) {
+  .cabecalho__interior {
+    flex-direction: row;                     /* logo à esquerda, menu à direita */
+    justify-content: space-between;
+  }
+
+  .hero {
+    padding: 5rem 0;
+  }
+
+  .hero__grelha {
+    grid-template-columns: 3fr 2fr;          /* texto mais largo que a imagem */
+  }
+
+  .hero__imagem {
+    width: 100%;
+    order: 0;                                /* imagem volta para a direita */
+  }
+
+  .rodape__interior {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+
+/* ---- lg: computadores ---- */
+@media (min-width: 1024px) {
+  .grelha-cartoes {
+    grid-template-columns: repeat(4, 1fr);   /* 4 colunas */
+  }
+
+  .grelha-numeros {
+    grid-template-columns: repeat(4, 1fr);   /* números todos numa linha */
+  }
+
+  .layout-artigo {
+    grid-template-columns: 2fr 1fr;          /* artigo + barra lateral */
+  }
+
+  .lateral {
+    position: sticky;                        /* a ficha acompanha o scroll */
+    top: 5rem;
+  }
+}

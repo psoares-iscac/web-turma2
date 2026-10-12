@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tudo sobre Marte, o planeta vermelho.">
+  <title>Marte | Sistema Solar</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <header class="cabecalho" id="topo">
+    <div class="contentor cabecalho__interior">
+      <a href="index.html" class="logo">☀ Sistema Solar</a>
+      <nav aria-label="Navegação principal">
+        <ul class="menu">
+          <li><a href="index.html" class="menu__link">Início</a></li>
+          <li><a href="index.html#planetas" class="menu__link">Planetas</a></li>
+          <!-- aria-current indica a página atual a leitores de ecrã -->
+          <li><a href="marte.html" class="menu__link menu__link--ativo" aria-current="page">Marte</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="contentor">
+
+    <!-- "Trilho" de navegação: mostra onde estamos no site -->
+    <nav class="trilho" aria-label="Trilho de navegação">
+      <a href="index.html">Início</a> / <span>Marte</span>
+    </nav>
+
+    <!-- Layout de duas colunas em ecrãs grandes: artigo + barra lateral -->
+    <div class="layout-artigo">
+
+      <!-- ===== ARTIGO PRINCIPAL ===== -->
+      <article class="artigo">
+        <p class="etiqueta">Planeta rochoso · 4.º a partir do Sol</p>
+        <h1>Marte, o planeta vermelho</h1>
+
+        <!-- figure + figcaption: imagem com legenda -->
+        <!-- Imagem responsiva com 3 tamanhos: o telemóvel descarrega a de 400px,
+             o computador a de 800px ou 1200px (ecrãs de alta densidade). -->
+        <figure class="figura">
+          <img src="img/marte-viking-800.jpg"
+               srcset="img/marte-viking-400.jpg 400w,
+                       img/marte-viking-800.jpg 800w,
+                       img/marte-viking-1200.jpg 1200w"
+               sizes="(min-width: 1024px) 700px, 100vw"
+               alt="Fotografia de Marte com o longo desfiladeiro Valles Marineris a atravessar o planeta"
+               width="1200" height="1200">
+          <figcaption>
+            Marte visto pelas sondas Viking. A "cicatriz" escura a meio é o Valles Marineris,
+            um desfiladeiro com mais de 4000 km.
+            <small>Imagem: NASA/JPL-Caltech (PIA00407)</small>
+          </figcaption>
+        </figure>
+
+        <!-- Índice com links para secções da própria página (âncoras) -->
+        <nav class="indice" aria-label="Índice do artigo">
+          <h2>Nesta página</h2>
+          <ol>
+            <li><a href="#cor">Porque é vermelho?</a></li>
+            <li><a href="#vulcao">O maior vulcão</a></li>
+            <li><a href="#missoes">Missões a Marte</a></li>
+          </ol>
+        </nav>
+
+        <section id="cor">
+          <h2>Porque é vermelho?</h2>
+          <p>
+            A superfície de Marte está coberta de poeira rica em <strong>óxido de ferro</strong>,
+            o mesmo composto que forma a ferrugem. É essa poeira que dá ao planeta
+            a sua cor avermelhada característica.
+          </p>
+        </section>
+
+        <section id="vulcao">
+          <h2>O maior vulcão</h2>
+          <p>
+            O <em>Olympus Mons</em> tem cerca de 22 km de altura — quase três vezes
+            a altura do Monte Evereste. A sua base é tão larga que cobriria
+            grande parte de Portugal continental.
+          </p>
+        </section>
+
+        <section id="missoes">
+          <h2>Missões a Marte</h2>
+          <p>
+            Vários robôs já exploraram a superfície marciana. O rover
+            <a href="https://science.nasa.gov/mission/mars-2020-perseverance/" target="_blank" rel="noopener">Perseverance</a>
+            procura sinais de vida antiga, e o pequeno helicóptero
+            <em>Ingenuity</em> foi o primeiro aparelho a voar noutro planeta.
+          </p>
+          <p>
+            A Agência Espacial Europeia também tem um programa dedicado:
+            <a href="https://www.esa.int/Science_Exploration/Human_and_Robotic_Exploration/Exploration/ExoMars" target="_blank" rel="noopener">ExoMars</a>.
+          </p>
+        </section>
+      </article>
+
+      <!-- ===== BARRA LATERAL ===== -->
+      <aside class="lateral">
+        <img src="img/marte-osiris-400.jpg"
+             alt="Fotografia de Marte tirada pela sonda Rosetta"
+             class="lateral__imagem" width="400" height="400" loading="lazy">
+        <h2>Ficha técnica</h2>
+
+        <!-- Aqui os ícones são FICHEIROS .svg usados com <img>
+             (ao contrário da página inicial, onde estão "inline").
+             Com <img> a cor fica fixa dentro do ficheiro: não muda com o CSS.
+             alt="" porque o texto ao lado já diz o que o ícone representa. -->
+        <div class="tabela-wrapper">
+          <table class="tabela">
+            <tbody>
+              <tr>
+                <th scope="row"><img src="img/icones/diametro.svg" alt="" class="tabela__icone"> Diâmetro</th>
+                <td>6 779 km</td>
+              </tr>
+              <tr>
+                <th scope="row"><img src="img/icones/relogio.svg" alt="" class="tabela__icone"> Duração do dia</th>
+                <td>24 h 37 min</td>
+              </tr>
+              <tr>
+                <th scope="row"><img src="img/icones/calendario.svg" alt="" class="tabela__icone"> Duração do ano</th>
+                <td>687 dias terrestres</td>
+              </tr>
+              <tr>
+                <th scope="row"><img src="img/icones/lua.svg" alt="" class="tabela__icone"> Luas</th>
+                <td>2 (Fobos e Deimos)</td>
+              </tr>
+              <tr>
+                <th scope="row"><img src="img/icones/termometro.svg" alt="" class="tabela__icone"> Temperatura média</th>
+                <td>≈ −63 °C</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="credito">Imagem: ESA &amp; MPS for OSIRIS Team (CC BY-SA 3.0 IGO)</p>
+
+        <a href="index.html#planetas" class="botao botao--largo">← Voltar aos planetas</a>
+      </aside>
+
+    </div>
+  </main>
+
+  <footer class="rodape">
+    <div class="contentor rodape__interior">
+      <p>Projeto escolar · Sistema Solar</p>
+      <ul class="rodape__links">
+        <li><a href="https://science.nasa.gov/mars/" target="_blank" rel="noopener">NASA</a></li>
+        <li><a href="https://www.esa.int/Science_Exploration/Space_Science" target="_blank" rel="noopener">ESA</a></li>
+        <li><a href="#topo">Voltar ao topo ↑</a></li>
+      </ul>
+    </div>
+  </footer>
+
+</body>
+</html>
