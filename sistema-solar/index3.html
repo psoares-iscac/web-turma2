@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <!-- Codificação de caracteres: permite acentos (á, ç, ã...) -->
+  <meta charset="UTF-8">
+  <!-- Essencial para o design responsivo: a largura da página = largura do ecrã -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Uma viagem pelos planetas do Sistema Solar.">
+  <title>Sistema Solar | Início</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="css/sistemasolar.css">
+
+  <style type="text/tailwindcss">
+    @utility cartao{
+      @apply flex flex-col h-full bg-(--cor-superficie) border rounded-[12px] 
+            border-(--cor-borda) overflow-hidden hover:-translate-y-2 delay-150;
+    }
+
+  </style>
+
+</head>
+<body>
+
+  <!-- ===== CABEÇALHO ===== -->
+  <!-- O id="topo" é o destino do link "Voltar ao topo" no rodapé -->
+  <header class="cabecalho" id="topo">
+    <div class="bg-black  text-white flex flex col md:flex-row md:justify-between">
+      <a href="index.html" class="logo">☀ Sistema Solar</a>
+
+      <!-- Navegação principal -->
+      <nav class="flex" aria-label="Navegação principal">
+        <ul class="menu flex ">
+          <li><a href="index.html" class="menu__link menu__link--ativo" pr-2px>Início</a></li>
+          <li><a href="#planetas" class="menu__link">Planetas</a></li>
+          <li><a href="marte.html" class="menu__link">Marte</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  
+
+<main>
+
+   <!-- ===== LISTA DE PLANETAS (CARTÕES) ===== -->
+    <section id="planetas" class="seccao">
+      <div class="contentor w-full max-w-6xl mx-auto mt-8 px-4" >
+        <p class="text-center text-4xl font-bold">Quatro planetas em destaque</p>
+        <p class="mt-8 mx-auto max-w-[60ch] text-center text-[var(--cor-texto-suave)] ">
+          Dois planetas rochosos e dois gigantes gasosos.
+          Repara como as diferenças de tamanho são enormes!
+        </p>
+
+        <!-- Grelha de cartões: 1 coluna no telemóvel, 2 no tablet, 4 no computador -->
+        <div class="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4 lg:gap-16">
+
+          <article class="cartao">
+            <img src="img/terra.svg" alt="Ilustração do planeta Terra" class="cartao__imagem" width="300" height="300">
+            <div class="p-4 flex flex-col grow">
+              <h3 class="text-3xl font-bold">Terra</h3>
+              <p class="my-4 text-(--cor-texto-suave)">O único planeta conhecido com vida. Cerca de 71% da superfície está coberta por água.</p>
+              <a href="https://science.nasa.gov/earth/" target="_blank" rel="noopener" class="mt-auto cartao__link">Saber mais na NASA ↗</a>
+            </div>
+          </article>
+
+          <article class="cartao">
+            <!-- Fotografia real (JPG) em vez de ilustração (SVG).
+                 srcset: lista de versões da mesma imagem e a respetiva largura (w).
+                 sizes: largura que a imagem vai ocupar no ecrã.
+                 O browser escolhe o ficheiro mais leve que chegue para a qualidade. -->
+            <img
+              src="img/marte-osiris-400.jpg"
+              srcset="img/marte-osiris-400.jpg 400w,
+                      img/marte-osiris-800.jpg 800w"
+              sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+              alt="Fotografia de Marte tirada pela sonda Rosetta, com o planeta alaranjado sobre fundo negro"
+              class="cartao__imagem cartao__imagem--foto"
+              width="400" height="400"
+              loading="lazy">
+            <div class="p-4 flex flex-col grow">
+              <h3 class="text-3xl font-bold">Marte</h3>
+              <p class="my-4 text-(--cor-texto-suave)">O planeta vermelho. Tem o maior vulcão do Sistema Solar: o Olympus Mons.</p>
+              <!-- Link interno para a segunda página -->
+              <a class="mt-auto" href="marte.html">Ver página de Marte →</a>
+            </div>
+          </article>
+
+          <article class="cartao">
+            <img src="img/jupiter.svg" alt="Ilustração de Júpiter com riscas e a Grande Mancha Vermelha" class="cartao__imagem" width="300" height="300">
+            <div class="p-4 flex flex-col grow">
+              <h3 class="text-3xl font-bold">Júpiter</h3>
+              <p class="my-4 text-(--cor-texto-suave)">O maior planeta. Caberiam lá dentro mais de 1300 Terras.</p>
+              <a href="https://science.nasa.gov/jupiter/" target="_blank" rel="noopener" class="mt-auto cartao__link">Saber mais na NASA ↗</a>
+            </div>
+          </article>
+
+          <article class="cartao">
+            <img src="img/saturno.svg" alt="Ilustração de Saturno com os seus anéis" class="cartao__imagem" width="300" height="300">
+            <div class="p-4 flex flex-col grow">
+              <h3 class="text-3xl font-bold">Saturno</h3>
+              <p class="my-4 text-(--cor-texto-suave)">Famoso pelos anéis, feitos de gelo e rocha. É tão pouco denso que flutuaria em água.</p>
+              <a href="https://science.nasa.gov/saturn/" target="_blank" rel="noopener" class="mt-auto cartao__link">Saber mais na NASA ↗</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+
+</main>
+
+
+  <!-- ===== RODAPÉ ===== -->
+  <footer class="rodape hidden">
+    <div class="contentor rodape__interior">
+      <p>Projeto escolar · Sistema Solar<br>
+        <small>Foto de Marte: ESA &amp; MPS for OSIRIS Team (CC BY-SA 3.0 IGO)</small></p>
+      <ul class="rodape__links">
+        <li><a href="https://science.nasa.gov/solar-system/" target="_blank" rel="noopener">NASA</a></li>
+        <li><a href="https://www.esa.int/Science_Exploration/Space_Science" target="_blank" rel="noopener">ESA</a></li>
+        <li><a href="#topo">Voltar ao topo ↑</a></li>
+      </ul>
+    </div>
+  </footer>
+
+</body>
+</html>

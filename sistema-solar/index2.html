@@ -9,6 +9,15 @@
   <title>Sistema Solar | Início</title>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <link rel="stylesheet" href="css/sistemasolar.css">
+
+  <style type="text/tailwindcss">
+    @utility cartao{
+      @apply flex flex-col h-full bg-(--cor-superficie) border rounded-[12px] 
+            border-(--cor-borda) overflow-hidden hover:-translate-y-2 delay-150;
+    }
+
+  </style>
+
 </head>
 <body>
 
@@ -43,14 +52,14 @@
         </p>
 
         <!-- Grelha de cartões: 1 coluna no telemóvel, 2 no tablet, 4 no computador -->
-        <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4 lg:gap-16">
+        <div class="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4 lg:gap-16">
 
           <article class="cartao">
             <img src="img/terra.svg" alt="Ilustração do planeta Terra" class="cartao__imagem" width="300" height="300">
-            <div class="cartao__corpo">
-              <h3>Terra</h3>
-              <p>O único planeta conhecido com vida. Cerca de 71% da superfície está coberta por água.</p>
-              <a href="https://science.nasa.gov/earth/" target="_blank" rel="noopener" class="cartao__link">Saber mais na NASA ↗</a>
+            <div class="p-4 flex flex-col grow">
+              <h3 class="text-3xl font-bold">Terra</h3>
+              <p class="my-4 text-(--cor-texto-suave)">O único planeta conhecido com vida. Cerca de 71% da superfície está coberta por água.</p>
+              <a href="https://science.nasa.gov/earth/" target="_blank" rel="noopener" class="mt-auto cartao__link">Saber mais na NASA ↗</a>
             </div>
           </article>
 
@@ -68,29 +77,29 @@
               class="cartao__imagem cartao__imagem--foto"
               width="400" height="400"
               loading="lazy">
-            <div class="cartao__corpo">
-              <h3>Marte</h3>
-              <p>O planeta vermelho. Tem o maior vulcão do Sistema Solar: o Olympus Mons.</p>
+            <div class="p-4 flex flex-col grow">
+              <h3 class="text-3xl font-bold">Marte</h3>
+              <p class="my-4 text-(--cor-texto-suave)">O planeta vermelho. Tem o maior vulcão do Sistema Solar: o Olympus Mons.</p>
               <!-- Link interno para a segunda página -->
-              <a href="marte.html" class="cartao__link">Ver página de Marte →</a>
+              <a class="mt-auto" href="marte.html">Ver página de Marte →</a>
             </div>
           </article>
 
           <article class="cartao">
             <img src="img/jupiter.svg" alt="Ilustração de Júpiter com riscas e a Grande Mancha Vermelha" class="cartao__imagem" width="300" height="300">
-            <div class="cartao__corpo">
-              <h3>Júpiter</h3>
-              <p>O maior planeta. Caberiam lá dentro mais de 1300 Terras.</p>
-              <a href="https://science.nasa.gov/jupiter/" target="_blank" rel="noopener" class="cartao__link">Saber mais na NASA ↗</a>
+            <div class="p-4 flex flex-col grow">
+              <h3 class="text-3xl font-bold">Júpiter</h3>
+              <p class="my-4 text-(--cor-texto-suave)">O maior planeta. Caberiam lá dentro mais de 1300 Terras.</p>
+              <a href="https://science.nasa.gov/jupiter/" target="_blank" rel="noopener" class="mt-auto cartao__link">Saber mais na NASA ↗</a>
             </div>
           </article>
 
           <article class="cartao">
             <img src="img/saturno.svg" alt="Ilustração de Saturno com os seus anéis" class="cartao__imagem" width="300" height="300">
-            <div class="cartao__corpo">
-              <h3>Saturno</h3>
-              <p>Famoso pelos anéis, feitos de gelo e rocha. É tão pouco denso que flutuaria em água.</p>
-              <a href="https://science.nasa.gov/saturn/" target="_blank" rel="noopener" class="cartao__link">Saber mais na NASA ↗</a>
+            <div class="p-4 flex flex-col grow">
+              <h3 class="text-3xl font-bold">Saturno</h3>
+              <p class="my-4 text-(--cor-texto-suave)">Famoso pelos anéis, feitos de gelo e rocha. É tão pouco denso que flutuaria em água.</p>
+              <a href="https://science.nasa.gov/saturn/" target="_blank" rel="noopener" class="mt-auto cartao__link">Saber mais na NASA ↗</a>
             </div>
           </article>
 
