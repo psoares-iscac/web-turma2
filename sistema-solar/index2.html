@@ -7,9 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Uma viagem pelos planetas do Sistema Solar.">
   <title>Sistema Solar | Início</title>
-  <!-- Ligação à folha de estilos externa -->
-  <link rel="stylesheet" href="">
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="css/sistemasolar.css">
 </head>
 <body>
 
@@ -31,6 +30,77 @@
   </header>
 
   
+
+<main>
+
+   <!-- ===== LISTA DE PLANETAS (CARTÕES) ===== -->
+    <section id="planetas" class="seccao">
+      <div class="contentor w-full max-w-6xl mx-auto mt-8 px-4" >
+        <p class="text-center text-4xl font-bold">Quatro planetas em destaque</p>
+        <p class="mt-8 mx-auto max-w-[60ch] text-center text-[var(--cor-texto-suave)] ">
+          Dois planetas rochosos e dois gigantes gasosos.
+          Repara como as diferenças de tamanho são enormes!
+        </p>
+
+        <!-- Grelha de cartões: 1 coluna no telemóvel, 2 no tablet, 4 no computador -->
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4 lg:gap-16">
+
+          <article class="cartao">
+            <img src="img/terra.svg" alt="Ilustração do planeta Terra" class="cartao__imagem" width="300" height="300">
+            <div class="cartao__corpo">
+              <h3>Terra</h3>
+              <p>O único planeta conhecido com vida. Cerca de 71% da superfície está coberta por água.</p>
+              <a href="https://science.nasa.gov/earth/" target="_blank" rel="noopener" class="cartao__link">Saber mais na NASA ↗</a>
+            </div>
+          </article>
+
+          <article class="cartao">
+            <!-- Fotografia real (JPG) em vez de ilustração (SVG).
+                 srcset: lista de versões da mesma imagem e a respetiva largura (w).
+                 sizes: largura que a imagem vai ocupar no ecrã.
+                 O browser escolhe o ficheiro mais leve que chegue para a qualidade. -->
+            <img
+              src="img/marte-osiris-400.jpg"
+              srcset="img/marte-osiris-400.jpg 400w,
+                      img/marte-osiris-800.jpg 800w"
+              sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+              alt="Fotografia de Marte tirada pela sonda Rosetta, com o planeta alaranjado sobre fundo negro"
+              class="cartao__imagem cartao__imagem--foto"
+              width="400" height="400"
+              loading="lazy">
+            <div class="cartao__corpo">
+              <h3>Marte</h3>
+              <p>O planeta vermelho. Tem o maior vulcão do Sistema Solar: o Olympus Mons.</p>
+              <!-- Link interno para a segunda página -->
+              <a href="marte.html" class="cartao__link">Ver página de Marte →</a>
+            </div>
+          </article>
+
+          <article class="cartao">
+            <img src="img/jupiter.svg" alt="Ilustração de Júpiter com riscas e a Grande Mancha Vermelha" class="cartao__imagem" width="300" height="300">
+            <div class="cartao__corpo">
+              <h3>Júpiter</h3>
+              <p>O maior planeta. Caberiam lá dentro mais de 1300 Terras.</p>
+              <a href="https://science.nasa.gov/jupiter/" target="_blank" rel="noopener" class="cartao__link">Saber mais na NASA ↗</a>
+            </div>
+          </article>
+
+          <article class="cartao">
+            <img src="img/saturno.svg" alt="Ilustração de Saturno com os seus anéis" class="cartao__imagem" width="300" height="300">
+            <div class="cartao__corpo">
+              <h3>Saturno</h3>
+              <p>Famoso pelos anéis, feitos de gelo e rocha. É tão pouco denso que flutuaria em água.</p>
+              <a href="https://science.nasa.gov/saturn/" target="_blank" rel="noopener" class="cartao__link">Saber mais na NASA ↗</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+
+</main>
+
 
   <!-- ===== RODAPÉ ===== -->
   <footer class="rodape hidden">

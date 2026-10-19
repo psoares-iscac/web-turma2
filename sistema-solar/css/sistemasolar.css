@@ -1,0 +1,39 @@
+/* ---------- 1. VARIÁVEIS (cores, espaçamentos) ----------
+   Equivalem ao "tema" que mais tarde se configura no Tailwind. */
+:root {
+  --cor-fundo: #0b1020;
+  --cor-superficie: #161d33;
+  --cor-texto: #e6e9f2;
+  --cor-texto-suave: #a3abc2;
+  --cor-destaque: #ff8a3d;      /* laranja "solar" */
+  --cor-destaque-escura: #e06a1c;
+  --cor-borda: #2a3352;
+
+  --raio: 12px;                 /* cantos arredondados */
+  --largura-max: 1100px;        /* largura máxima do conteúdo */
+  --fonte: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--fonte);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--cor-texto);
+  background-color: var(--cor-fundo);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--cor-destaque);
+}
+
+a:hover,
+a:focus {
+  color: #ffb27a;
+}
