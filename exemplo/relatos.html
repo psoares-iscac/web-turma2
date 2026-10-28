@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relatos · Aragem</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="js/menu.js" defer></script>
+</head>
+<body class="bg-slate-100 text-slate-900 font-['IBM_Plex_Sans',sans-serif] antialiased">
+
+  <header class="bg-white border-b border-slate-200">
+    <div class="mx-auto max-w-6xl px-4 py-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-3">
+      <a href="index.html" class="flex items-baseline gap-2">
+        <span class="font-['Bricolage_Grotesque',sans-serif] text-2xl font-bold tracking-tight">Aragem</span>
+        <span class="hidden sm:inline text-xs uppercase tracking-widest text-slate-500">observatório de condições</span>
+      </a>
+      <!-- Botão do menu: só visível em ecrãs pequenos; o comportamento está em js/menu.js -->
+      <button type="button" id="menu-botao" aria-expanded="false" aria-controls="menu-principal" class="md:hidden rounded border border-slate-300 px-3 py-1.5 text-sm font-medium hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-600 aria-expanded:bg-slate-900 aria-expanded:text-white aria-expanded:border-slate-900">
+        <span id="menu-icone" aria-hidden="true">☰</span> Menu
+      </button>
+      <nav id="menu-principal" aria-label="Principal" class="hidden md:block w-full md:w-auto">
+        <ul class="flex flex-col md:flex-row md:items-center gap-1 text-sm border-t border-slate-200 pt-3 md:border-0 md:pt-0">
+          <li><a href="index.html" class="block rounded px-3 py-1.5 text-slate-600 hover:bg-slate-100 hover:text-slate-900">Locais</a></li>
+          <li><a href="relatos.html" aria-current="page" class="block rounded px-3 py-1.5 bg-sky-100 text-sky-800 font-medium">Relatos</a></li>
+          <li><a href="estatisticas.html" class="block rounded px-3 py-1.5 text-slate-600 hover:bg-slate-100 hover:text-slate-900">Estatísticas</a></li>
+          <li><a href="novo-relato.html" class="block rounded px-3 py-1.5 bg-sky-700 text-white font-medium hover:bg-sky-800">Novo relato</a></li>
+          <li><a href="entrar.html" class="block rounded px-3 py-1.5 border border-slate-300 hover:bg-slate-100">Entrar</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-6xl px-4 py-8 flex flex-col gap-6">
+    <div>
+      <h1 class="font-['Bricolage_Grotesque',sans-serif] text-3xl sm:text-4xl font-bold tracking-tight">Relatos da comunidade</h1>
+      <p class="text-slate-500 mt-1">O que as pessoas encontraram no terreno, comparado com a previsão.</p>
+    </div>
+
+    <!-- Filtros (mais tarde: filtram a lista em JavaScript ou enviam GET para a API) -->
+    <form action="#" method="get" class="rounded-lg border border-slate-200 bg-white p-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 items-end">
+      <div class="flex flex-col gap-1">
+        <label for="f-local" class="text-sm font-medium">Local</label>
+        <select id="f-local" name="local" class="rounded border border-slate-300 bg-slate-50 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-sky-600">
+          <option value="">Todos</option><option>Praia do Guincho</option><option>Supertubos</option><option>Torre</option><option>Trilho da Pena</option><option>Arrábida</option>
+        </select>
+      </div>
+      <div class="flex flex-col gap-1">
+        <label for="f-nota" class="text-sm font-medium">Nota mínima</label>
+        <select id="f-nota" name="nota" class="rounded border border-slate-300 bg-slate-50 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-sky-600">
+          <option value="">Qualquer</option><option value="3">3 ou mais</option><option value="4">4 ou mais</option><option value="5">Só 5</option>
+        </select>
+      </div>
+      <div class="flex flex-col gap-1">
+        <label for="f-texto" class="text-sm font-medium">Pesquisar</label>
+        <input id="f-texto" name="q" type="search" placeholder="ex.: nevoeiro" class="rounded border border-slate-300 bg-slate-50 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-sky-600">
+      </div>
+      <button type="submit" class="rounded bg-slate-900 text-white font-semibold py-2 hover:bg-slate-700">Filtrar</button>
+    </form>
+
+    <p class="text-sm text-slate-500">A mostrar 6 de 412 relatos · mais recentes primeiro</p>
+
+    <ul class="grid gap-4 md:grid-cols-2">
+      <li class="rounded-lg border border-slate-200 bg-white p-4 flex flex-col gap-2">
+        <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
+          <a href="local.html" class="font-semibold hover:underline">Praia do Guincho</a>
+          <span class="text-slate-500">hoje, 17:40 · marta.r</span>
+        </div>
+        <p>Rajadas muito fortes na zona norte da praia. Kitesurf só para quem tem experiência.</p>
+        <div class="flex flex-wrap items-center justify-between gap-2 text-sm">
+          <span class="text-slate-500">Nota <span aria-label="2 em 5">★★☆☆☆</span></span>
+          <span class="font-['IBM_Plex_Mono',monospace] text-xs rounded bg-red-100 text-red-700 px-2 py-0.5">vento 38 obs. / 34 prev.</span>
+        </div>
+      </li>
+      <li class="rounded-lg border border-slate-200 bg-white p-4 flex flex-col gap-2">
+        <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
+          <a href="local.html" class="font-semibold hover:underline">Supertubos</a>
+          <span class="text-slate-500">hoje, 16:15 · joao_s</span>
+        </div>
+        <p>Ondas limpas e regulares, pouca gente na água. A previsão acertou.</p>
+        <div class="flex flex-wrap items-center justify-between gap-2 text-sm">
+          <span class="text-slate-500">Nota <span aria-label="5 em 5">★★★★★</span></span>
+          <span class="font-['IBM_Plex_Mono',monospace] text-xs rounded bg-emerald-100 text-emerald-700 px-2 py-0.5">ondas 1,5 obs. / 1,6 prev.</span>
+        </div>
+      </li>
+      <li class="rounded-lg border border-slate-200 bg-white p-4 flex flex-col gap-2">
+        <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
+          <a href="local.html" class="font-semibold hover:underline">Torre</a>
+          <span class="text-slate-500">ontem, 11:02 · rui.alves</span>
+        </div>
+        <p>Mais frio do que o previsto e gelo nas zonas de sombra. Levar luvas.</p>
+        <div class="flex flex-wrap items-center justify-between gap-2 text-sm">
+          <span class="text-slate-500">Nota <span aria-label="3 em 5">★★★☆☆</span></span>
+          <span class="font-['IBM_Plex_Mono',monospace] text-xs rounded bg-amber-100 text-amber-800 px-2 py-0.5">temp. 1° obs. / 4° prev.</span>
+        </div>
+      </li>
+      <li class="rounded-lg border border-slate-200 bg-white p-4 flex flex-col gap-2">
+        <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
+          <a href="local.html" class="font-semibold hover:underline">Trilho da Pena</a>
+          <span class="text-slate-500">ontem, 08:30 · ines_c</span>
+        </div>
+        <p>Nevoeiro cerrado até perto das 10:00, depois abriu. Trilho com lama na descida.</p>
+        <div class="flex flex-wrap items-center justify-between gap-2 text-sm">
+          <span class="text-slate-500">Nota <span aria-label="4 em 5">★★★★☆</span></span>
+          <span class="font-['IBM_Plex_Mono',monospace] text-xs rounded bg-emerald-100 text-emerald-700 px-2 py-0.5">humid. 90% obs. / 88% prev.</span>
+        </div>
+      </li>
+      <li class="rounded-lg border border-slate-200 bg-white p-4 flex flex-col gap-2">
+        <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
+          <a href="local.html" class="font-semibold hover:underline">Arrábida</a>
+          <span class="text-slate-500">seg 26, 15:20 · pedro.n</span>
+        </div>
+        <p>Água transparente e mar flat. Excelente para snorkeling junto ao Portinho.</p>
+        <div class="flex flex-wrap items-center justify-between gap-2 text-sm">
+          <span class="text-slate-500">Nota <span aria-label="5 em 5">★★★★★</span></span>
+          <span class="font-['IBM_Plex_Mono',monospace] text-xs rounded bg-emerald-100 text-emerald-700 px-2 py-0.5">ondas 0,3 obs. / 0,4 prev.</span>
+        </div>
+      </li>
+      <li class="rounded-lg border border-slate-200 bg-white p-4 flex flex-col gap-2">
+        <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
+          <a href="local.html" class="font-semibold hover:underline">Praia do Guincho</a>
+          <span class="text-slate-500">seg 26, 09:10 · tiago.lm</span>
+        </div>
+        <p>Manhã calma, mar com pouca ondulação. Bom para paddle.</p>
+        <div class="flex flex-wrap items-center justify-between gap-2 text-sm">
+          <span class="text-slate-500">Nota <span aria-label="4 em 5">★★★★☆</span></span>
+          <span class="font-['IBM_Plex_Mono',monospace] text-xs rounded bg-emerald-100 text-emerald-700 px-2 py-0.5">vento 15 obs. / 14 prev.</span>
+        </div>
+      </li>
+    </ul>
+
+    <!-- Paginação -->
+    <nav aria-label="Páginas" class="flex justify-center">
+      <ul class="flex gap-1 text-sm">
+        <li><span class="block rounded px-3 py-1.5 text-slate-400">‹ Anterior</span></li>
+        <li><a href="#" aria-current="page" class="block rounded px-3 py-1.5 bg-slate-900 text-white">1</a></li>
+        <li><a href="#" class="block rounded px-3 py-1.5 hover:bg-white">2</a></li>
+        <li><a href="#" class="block rounded px-3 py-1.5 hover:bg-white">3</a></li>
+        <li><a href="#" class="block rounded px-3 py-1.5 hover:bg-white">Seguinte ›</a></li>
+      </ul>
+    </nav>
+  </main>
+
+  <footer class="border-t border-slate-200">
+    <div class="mx-auto max-w-6xl px-4 py-6 text-xs text-slate-500 flex flex-wrap justify-between gap-2">
+      <p>Aragem · projeto de demonstração para Aplicações Web</p>
+      <p>Previsões: Open-Meteo · todos os valores são dados de exemplo</p>
+    </div>
+  </footer>
+</body>
+</html>

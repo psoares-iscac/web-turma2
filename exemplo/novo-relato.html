@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Novo relato · Aragem</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="js/menu.js" defer></script>
+</head>
+<body class="bg-slate-100 text-slate-900 font-['IBM_Plex_Sans',sans-serif] antialiased">
+
+  <header class="bg-white border-b border-slate-200">
+    <div class="mx-auto max-w-6xl px-4 py-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-3">
+      <a href="index.html" class="flex items-baseline gap-2">
+        <span class="font-['Bricolage_Grotesque',sans-serif] text-2xl font-bold tracking-tight">Aragem</span>
+        <span class="hidden sm:inline text-xs uppercase tracking-widest text-slate-500">observatório de condições</span>
+      </a>
+      <!-- Botão do menu: só visível em ecrãs pequenos; o comportamento está em js/menu.js -->
+      <button type="button" id="menu-botao" aria-expanded="false" aria-controls="menu-principal" class="md:hidden rounded border border-slate-300 px-3 py-1.5 text-sm font-medium hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-600 aria-expanded:bg-slate-900 aria-expanded:text-white aria-expanded:border-slate-900">
+        <span id="menu-icone" aria-hidden="true">☰</span> Menu
+      </button>
+      <nav id="menu-principal" aria-label="Principal" class="hidden md:block w-full md:w-auto">
+        <ul class="flex flex-col md:flex-row md:items-center gap-1 text-sm border-t border-slate-200 pt-3 md:border-0 md:pt-0">
+          <li><a href="index.html" class="block rounded px-3 py-1.5 text-slate-600 hover:bg-slate-100 hover:text-slate-900">Locais</a></li>
+          <li><a href="relatos.html" class="block rounded px-3 py-1.5 text-slate-600 hover:bg-slate-100 hover:text-slate-900">Relatos</a></li>
+          <li><a href="estatisticas.html" class="block rounded px-3 py-1.5 text-slate-600 hover:bg-slate-100 hover:text-slate-900">Estatísticas</a></li>
+          <li><a href="novo-relato.html" aria-current="page" class="block rounded px-3 py-1.5 bg-sky-900 text-white font-medium ring-2 ring-sky-300">Novo relato</a></li>
+          <li><a href="entrar.html" class="block rounded px-3 py-1.5 border border-slate-300 hover:bg-slate-100">Entrar</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-2xl px-4 py-8 flex flex-col gap-6">
+    <div>
+      <h1 class="font-['Bricolage_Grotesque',sans-serif] text-3xl sm:text-4xl font-bold tracking-tight">Novo relato</h1>
+      <p class="text-slate-500 mt-1">Conte o que encontrou. Os valores que medir ou estimar são comparados com a previsão para esse local e hora.</p>
+    </div>
+
+    <!-- Mais tarde: action="api/relatos.php" method="post" e validação em JavaScript -->
+    <form action="#" method="post" enctype="multipart/form-data" class="rounded-lg border border-slate-200 bg-white p-6 flex flex-col gap-6">
+
+      <fieldset class="flex flex-col gap-4">
+        <legend class="font-['Bricolage_Grotesque',sans-serif] text-lg font-bold mb-2">Onde e quando</legend>
+        <div class="flex flex-col gap-1">
+          <label for="local" class="text-sm font-medium">Local <span class="text-red-700">*</span></label>
+          <select id="local" name="local_id" required class="rounded border border-slate-300 bg-slate-50 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-sky-600">
+            <option value="">Escolha um local</option>
+            <option value="1">Praia do Guincho</option><option value="2">Supertubos</option><option value="3">Torre</option>
+            <option value="4">Trilho da Pena</option><option value="5">Arrábida</option>
+          </select>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div class="flex flex-col gap-1">
+            <label for="data" class="text-sm font-medium">Data <span class="text-red-700">*</span></label>
+            <input id="data" name="data" type="date" required max="2026-10-28" value="2026-10-28" class="rounded border border-slate-300 bg-slate-50 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-sky-600">
+          </div>
+          <div class="flex flex-col gap-1">
+            <label for="hora" class="text-sm font-medium">Hora <span class="text-red-700">*</span></label>
+            <input id="hora" name="hora" type="time" required value="17:40" class="rounded border border-slate-300 bg-slate-50 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-sky-600">
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="flex flex-col gap-4">
+        <legend class="font-['Bricolage_Grotesque',sans-serif] text-lg font-bold mb-2">O que observou</legend>
+        <p class="text-sm text-slate-500 -mt-2">Preencha só o que souber. Pode deixar campos em branco.</p>
+        <div class="grid gap-4 sm:grid-cols-3">
+          <div class="flex flex-col gap-1">
+            <label for="vento" class="text-sm font-medium">Vento <span class="text-slate-500 font-normal">(km/h)</span></label>
+            <input id="vento" name="vento" type="number" min="0" max="200" step="1" placeholder="ex.: 25" class="rounded border border-slate-300 bg-slate-50 px-3 py-2 font-['IBM_Plex_Mono',monospace] focus:outline-none focus:ring-2 focus:ring-sky-600">
+          </div>
+          <div class="flex flex-col gap-1">
+            <label for="temp" class="text-sm font-medium">Temperatura <span class="text-slate-500 font-normal">(°C)</span></label>
+            <input id="temp" name="temperatura" type="number" min="-30" max="50" step="0.5" placeholder="ex.: 16" class="rounded border border-slate-300 bg-slate-50 px-3 py-2 font-['IBM_Plex_Mono',monospace] focus:outline-none focus:ring-2 focus:ring-sky-600">
+          </div>
+          <div class="flex flex-col gap-1">
+            <label for="ondas" class="text-sm font-medium">Ondas <span class="text-slate-500 font-normal">(m)</span></label>
+            <input id="ondas" name="ondas" type="number" min="0" max="20" step="0.1" placeholder="ex.: 1,5" class="rounded border border-slate-300 bg-slate-50 px-3 py-2 font-['IBM_Plex_Mono',monospace] focus:outline-none focus:ring-2 focus:ring-sky-600">
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <span class="text-sm font-medium">Céu</span>
+          <div class="flex flex-wrap gap-2">
+            <label class="cursor-pointer"><input type="radio" name="ceu" value="limpo" class="peer sr-only" checked><span class="block rounded-full border border-slate-300 px-3 py-1.5 text-sm peer-checked:bg-sky-700 peer-checked:border-sky-700 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-sky-600">Limpo</span></label>
+            <label class="cursor-pointer"><input type="radio" name="ceu" value="nublado" class="peer sr-only"><span class="block rounded-full border border-slate-300 px-3 py-1.5 text-sm peer-checked:bg-sky-700 peer-checked:border-sky-700 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-sky-600">Nublado</span></label>
+            <label class="cursor-pointer"><input type="radio" name="ceu" value="nevoeiro" class="peer sr-only"><span class="block rounded-full border border-slate-300 px-3 py-1.5 text-sm peer-checked:bg-sky-700 peer-checked:border-sky-700 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-sky-600">Nevoeiro</span></label>
+            <label class="cursor-pointer"><input type="radio" name="ceu" value="chuva" class="peer sr-only"><span class="block rounded-full border border-slate-300 px-3 py-1.5 text-sm peer-checked:bg-sky-700 peer-checked:border-sky-700 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-sky-600">Chuva</span></label>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="flex flex-col gap-4">
+        <legend class="font-['Bricolage_Grotesque',sans-serif] text-lg font-bold mb-2">A sua avaliação</legend>
+        <div class="flex flex-col gap-2">
+          <span class="text-sm font-medium">Nota às condições <span class="text-red-700">*</span></span>
+          <div class="grid grid-cols-5 gap-2 max-w-sm">
+            <label><input type="radio" name="nota" value="1" required class="peer sr-only"><span class="block text-center rounded border border-slate-300 py-2 cursor-pointer peer-checked:bg-sky-700 peer-checked:border-sky-700 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-sky-600">1</span></label>
+            <label><input type="radio" name="nota" value="2" class="peer sr-only"><span class="block text-center rounded border border-slate-300 py-2 cursor-pointer peer-checked:bg-sky-700 peer-checked:border-sky-700 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-sky-600">2</span></label>
+            <label><input type="radio" name="nota" value="3" class="peer sr-only"><span class="block text-center rounded border border-slate-300 py-2 cursor-pointer peer-checked:bg-sky-700 peer-checked:border-sky-700 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-sky-600">3</span></label>
+            <label><input type="radio" name="nota" value="4" class="peer sr-only"><span class="block text-center rounded border border-slate-300 py-2 cursor-pointer peer-checked:bg-sky-700 peer-checked:border-sky-700 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-sky-600">4</span></label>
+            <label><input type="radio" name="nota" value="5" class="peer sr-only"><span class="block text-center rounded border border-slate-300 py-2 cursor-pointer peer-checked:bg-sky-700 peer-checked:border-sky-700 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-sky-600">5</span></label>
+          </div>
+          <p class="text-xs text-slate-500">1 = condições más · 5 = condições excelentes</p>
+        </div>
+        <div class="flex flex-col gap-1">
+          <label for="texto" class="text-sm font-medium">Descrição <span class="text-red-700">*</span></label>
+          <textarea id="texto" name="texto" rows="4" required minlength="10" maxlength="500" placeholder="ex.: Rajadas fortes na zona norte da praia." class="peer rounded border border-slate-300 bg-slate-50 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-sky-600 invalid:[&:not(:placeholder-shown)]:border-red-500"></textarea>
+          <p class="text-xs text-slate-500">Entre 10 e 500 caracteres.</p>
+        </div>
+        <div class="flex flex-col gap-1">
+          <label for="foto" class="text-sm font-medium">Fotografia <span class="text-slate-500 font-normal">(opcional, JPG ou PNG até 2 MB)</span></label>
+          <input id="foto" name="foto" type="file" accept="image/jpeg,image/png" class="text-sm text-slate-600 file:mr-3 file:rounded file:border-0 file:bg-sky-100 file:text-sky-800 file:px-3 file:py-1.5 file:font-medium hover:file:bg-sky-200">
+        </div>
+      </fieldset>
+
+      <div class="flex flex-wrap items-center gap-3 pt-2 border-t border-slate-200">
+        <button type="submit" class="rounded bg-sky-700 text-white font-semibold px-5 py-2.5 hover:bg-sky-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-sky-600">Publicar relato</button>
+        <a href="index.html" class="text-sm text-slate-600 hover:underline">Cancelar</a>
+        <p class="text-xs text-slate-500 sm:ml-auto"><span class="text-red-700">*</span> campo obrigatório</p>
+      </div>
+    </form>
+  </main>
+
+  <footer class="border-t border-slate-200">
+    <div class="mx-auto max-w-6xl px-4 py-6 text-xs text-slate-500 flex flex-wrap justify-between gap-2">
+      <p>Aragem · projeto de demonstração para Aplicações Web</p>
+      <p>Previsões: Open-Meteo · todos os valores são dados de exemplo</p>
+    </div>
+  </footer>
+</body>
+</html>

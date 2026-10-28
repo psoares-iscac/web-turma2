@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estatísticas · Aragem</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="js/menu.js" defer></script>
+</head>
+<body class="bg-slate-100 text-slate-900 font-['IBM_Plex_Sans',sans-serif] antialiased">
+
+  <header class="bg-white border-b border-slate-200">
+    <div class="mx-auto max-w-6xl px-4 py-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-3">
+      <a href="index.html" class="flex items-baseline gap-2">
+        <span class="font-['Bricolage_Grotesque',sans-serif] text-2xl font-bold tracking-tight">Aragem</span>
+        <span class="hidden sm:inline text-xs uppercase tracking-widest text-slate-500">observatório de condições</span>
+      </a>
+      <!-- Botão do menu: só visível em ecrãs pequenos; o comportamento está em js/menu.js -->
+      <button type="button" id="menu-botao" aria-expanded="false" aria-controls="menu-principal" class="md:hidden rounded border border-slate-300 px-3 py-1.5 text-sm font-medium hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-600 aria-expanded:bg-slate-900 aria-expanded:text-white aria-expanded:border-slate-900">
+        <span id="menu-icone" aria-hidden="true">☰</span> Menu
+      </button>
+      <nav id="menu-principal" aria-label="Principal" class="hidden md:block w-full md:w-auto">
+        <ul class="flex flex-col md:flex-row md:items-center gap-1 text-sm border-t border-slate-200 pt-3 md:border-0 md:pt-0">
+          <li><a href="index.html" class="block rounded px-3 py-1.5 text-slate-600 hover:bg-slate-100 hover:text-slate-900">Locais</a></li>
+          <li><a href="relatos.html" class="block rounded px-3 py-1.5 text-slate-600 hover:bg-slate-100 hover:text-slate-900">Relatos</a></li>
+          <li><a href="estatisticas.html" aria-current="page" class="block rounded px-3 py-1.5 bg-sky-100 text-sky-800 font-medium">Estatísticas</a></li>
+          <li><a href="novo-relato.html" class="block rounded px-3 py-1.5 bg-sky-700 text-white font-medium hover:bg-sky-800">Novo relato</a></li>
+          <li><a href="entrar.html" class="block rounded px-3 py-1.5 border border-slate-300 hover:bg-slate-100">Entrar</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-6xl px-4 py-8 flex flex-col gap-8">
+    <div class="flex flex-wrap items-end justify-between gap-4">
+      <div>
+        <h1 class="font-['Bricolage_Grotesque',sans-serif] text-3xl sm:text-4xl font-bold tracking-tight">Estatísticas</h1>
+        <p class="text-slate-500 mt-1">Atividade da comunidade e fiabilidade da previsão.</p>
+      </div>
+      <div class="flex flex-col gap-1">
+        <label for="mes" class="text-sm font-medium">Período</label>
+        <select id="mes" name="mes" class="rounded border border-slate-300 bg-white px-3 py-2 focus:outline-none focus:ring-2 focus:ring-sky-600">
+          <option>outubro de 2026</option><option>setembro de 2026</option><option>agosto de 2026</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Indicadores (mais tarde: COUNT, AVG... servidos em JSON) -->
+    <dl class="grid gap-4 grid-cols-2 lg:grid-cols-4">
+      <div class="rounded-lg border border-slate-200 bg-white p-4">
+        <dt class="text-[11px] uppercase tracking-wider text-slate-500">Relatos</dt>
+        <dd class="font-['Bricolage_Grotesque',sans-serif] text-3xl font-bold tabular-nums">412</dd>
+        <dd class="text-xs text-emerald-700">+18% que setembro</dd>
+      </div>
+      <div class="rounded-lg border border-slate-200 bg-white p-4">
+        <dt class="text-[11px] uppercase tracking-wider text-slate-500">Locais ativos</dt>
+        <dd class="font-['Bricolage_Grotesque',sans-serif] text-3xl font-bold tabular-nums">27</dd>
+        <dd class="text-xs text-slate-500">em 9 distritos</dd>
+      </div>
+      <div class="rounded-lg border border-slate-200 bg-white p-4">
+        <dt class="text-[11px] uppercase tracking-wider text-slate-500">Erro médio do vento</dt>
+        <dd class="font-['Bricolage_Grotesque',sans-serif] text-3xl font-bold tabular-nums">±4,1</dd>
+        <dd class="text-xs text-slate-500">km/h, previsto vs. observado</dd>
+      </div>
+      <div class="rounded-lg border border-slate-200 bg-white p-4">
+        <dt class="text-[11px] uppercase tracking-wider text-slate-500">Nota média</dt>
+        <dd class="font-['Bricolage_Grotesque',sans-serif] text-3xl font-bold tabular-nums">3,6</dd>
+        <dd class="text-xs text-slate-500">em 5</dd>
+      </div>
+    </dl>
+
+    <section class="grid gap-6 lg:grid-cols-2">
+      <!-- Barras horizontais feitas só com Tailwind (mais tarde: Chart.js) -->
+      <div class="min-w-0 rounded-lg border border-slate-200 bg-white p-5 flex flex-col gap-4">
+        <h2 class="font-['Bricolage_Grotesque',sans-serif] text-xl font-bold">Relatos por local</h2>
+        <ul class="flex flex-col gap-3 text-sm">
+          <li class="grid grid-cols-[8rem_1fr_2.5rem] items-center gap-3">
+            <span class="truncate">Praia do Guincho</span>
+            <span class="h-3 rounded bg-slate-100"><span class="block h-3 rounded bg-sky-700 w-full"></span></span>
+            <span class="text-right font-['IBM_Plex_Mono',monospace] tabular-nums">128</span>
+          </li>
+          <li class="grid grid-cols-[8rem_1fr_2.5rem] items-center gap-3">
+            <span class="truncate">Supertubos</span>
+            <span class="h-3 rounded bg-slate-100"><span class="block h-3 rounded bg-sky-700 w-[81%]"></span></span>
+            <span class="text-right font-['IBM_Plex_Mono',monospace] tabular-nums">104</span>
+          </li>
+          <li class="grid grid-cols-[8rem_1fr_2.5rem] items-center gap-3">
+            <span class="truncate">Torre</span>
+            <span class="h-3 rounded bg-slate-100"><span class="block h-3 rounded bg-sky-700 w-[55%]"></span></span>
+            <span class="text-right font-['IBM_Plex_Mono',monospace] tabular-nums">71</span>
+          </li>
+          <li class="grid grid-cols-[8rem_1fr_2.5rem] items-center gap-3">
+            <span class="truncate">Trilho da Pena</span>
+            <span class="h-3 rounded bg-slate-100"><span class="block h-3 rounded bg-sky-700 w-[49%]"></span></span>
+            <span class="text-right font-['IBM_Plex_Mono',monospace] tabular-nums">63</span>
+          </li>
+          <li class="grid grid-cols-[8rem_1fr_2.5rem] items-center gap-3">
+            <span class="truncate">Arrábida</span>
+            <span class="h-3 rounded bg-slate-100"><span class="block h-3 rounded bg-sky-700 w-[36%]"></span></span>
+            <span class="text-right font-['IBM_Plex_Mono',monospace] tabular-nums">46</span>
+          </li>
+        </ul>
+        <p class="text-xs text-slate-500">Os 5 locais com mais relatos · restantes 22 locais com 0 relatos este mês</p>
+      </div>
+
+      <!-- Tabela de fiabilidade -->
+      <div class="min-w-0 rounded-lg border border-slate-200 bg-white p-5 flex flex-col gap-4">
+        <h2 class="font-['Bricolage_Grotesque',sans-serif] text-xl font-bold">Fiabilidade da previsão</h2>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="text-left text-[11px] uppercase tracking-wider text-slate-500">
+                <th scope="col" class="py-2 pr-3 font-medium">Local</th>
+                <th scope="col" class="py-2 pr-3 font-medium text-right">Erro vento</th>
+                <th scope="col" class="py-2 pr-3 font-medium text-right">Erro temp.</th>
+                <th scope="col" class="py-2 font-medium">Avaliação</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-200 font-['IBM_Plex_Mono',monospace] tabular-nums">
+              <tr><th scope="row" class="py-2 pr-3 text-left font-sans font-normal">Praia do Guincho</th><td class="pr-3 text-right">±5,2</td><td class="pr-3 text-right">±0,9</td><td><span class="font-sans rounded-full bg-amber-100 text-amber-800 text-xs font-semibold px-2 py-0.5">Razoável</span></td></tr>
+              <tr><th scope="row" class="py-2 pr-3 text-left font-sans font-normal">Supertubos</th><td class="pr-3 text-right">±3,1</td><td class="pr-3 text-right">±0,6</td><td><span class="font-sans rounded-full bg-emerald-100 text-emerald-700 text-xs font-semibold px-2 py-0.5">Boa</span></td></tr>
+              <tr><th scope="row" class="py-2 pr-3 text-left font-sans font-normal">Torre</th><td class="pr-3 text-right">±4,8</td><td class="pr-3 text-right text-red-700">±2,7</td><td><span class="font-sans rounded-full bg-red-100 text-red-700 text-xs font-semibold px-2 py-0.5">Fraca</span></td></tr>
+              <tr><th scope="row" class="py-2 pr-3 text-left font-sans font-normal">Trilho da Pena</th><td class="pr-3 text-right">±2,9</td><td class="pr-3 text-right">±1,1</td><td><span class="font-sans rounded-full bg-emerald-100 text-emerald-700 text-xs font-semibold px-2 py-0.5">Boa</span></td></tr>
+              <tr><th scope="row" class="py-2 pr-3 text-left font-sans font-normal">Arrábida</th><td class="pr-3 text-right">±3,6</td><td class="pr-3 text-right">±0,8</td><td><span class="font-sans rounded-full bg-emerald-100 text-emerald-700 text-xs font-semibold px-2 py-0.5">Boa</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-xs text-slate-500">Erro = média da diferença absoluta entre o valor observado nos relatos e o previsto para a mesma hora.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-200">
+    <div class="mx-auto max-w-6xl px-4 py-6 text-xs text-slate-500 flex flex-wrap justify-between gap-2">
+      <p>Aragem · projeto de demonstração para Aplicações Web</p>
+      <p>Previsões: Open-Meteo · todos os valores são dados de exemplo</p>
+    </div>
+  </footer>
+</body>
+</html>

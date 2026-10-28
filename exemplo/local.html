@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Praia do Guincho · Aragem</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="js/menu.js" defer></script>
+</head>
+<body class="bg-slate-100 text-slate-900 font-['IBM_Plex_Sans',sans-serif] antialiased">
+
+  <header class="bg-white border-b border-slate-200">
+    <div class="mx-auto max-w-6xl px-4 py-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-3">
+      <a href="index.html" class="flex items-baseline gap-2">
+        <span class="font-['Bricolage_Grotesque',sans-serif] text-2xl font-bold tracking-tight">Aragem</span>
+        <span class="hidden sm:inline text-xs uppercase tracking-widest text-slate-500">observatório de condições</span>
+      </a>
+      <!-- Botão do menu: só visível em ecrãs pequenos; o comportamento está em js/menu.js -->
+      <button type="button" id="menu-botao" aria-expanded="false" aria-controls="menu-principal" class="md:hidden rounded border border-slate-300 px-3 py-1.5 text-sm font-medium hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-600 aria-expanded:bg-slate-900 aria-expanded:text-white aria-expanded:border-slate-900">
+        <span id="menu-icone" aria-hidden="true">☰</span> Menu
+      </button>
+      <nav id="menu-principal" aria-label="Principal" class="hidden md:block w-full md:w-auto">
+        <ul class="flex flex-col md:flex-row md:items-center gap-1 text-sm border-t border-slate-200 pt-3 md:border-0 md:pt-0">
+          <li><a href="index.html" aria-current="page" class="block rounded px-3 py-1.5 bg-sky-100 text-sky-800 font-medium">Locais</a></li>
+          <li><a href="relatos.html" class="block rounded px-3 py-1.5 text-slate-600 hover:bg-slate-100 hover:text-slate-900">Relatos</a></li>
+          <li><a href="estatisticas.html" class="block rounded px-3 py-1.5 text-slate-600 hover:bg-slate-100 hover:text-slate-900">Estatísticas</a></li>
+          <li><a href="novo-relato.html" class="block rounded px-3 py-1.5 bg-sky-700 text-white font-medium hover:bg-sky-800">Novo relato</a></li>
+          <li><a href="entrar.html" class="block rounded px-3 py-1.5 border border-slate-300 hover:bg-slate-100">Entrar</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-6xl px-4 py-8 flex flex-col gap-8">
+
+    <!-- Cabeçalho do local -->
+    <section class="flex flex-col gap-4">
+      <nav aria-label="Caminho" class="text-sm text-slate-500">
+        <a href="index.html" class="hover:underline">Locais</a> <span aria-hidden="true">›</span> <span class="text-slate-900">Praia do Guincho</span>
+      </nav>
+      <div class="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <div class="flex flex-wrap items-center gap-3">
+            <h1 class="font-['Bricolage_Grotesque',sans-serif] text-3xl sm:text-4xl font-bold tracking-tight">Praia do Guincho</h1>
+            <span class="rounded-full bg-red-100 text-red-700 text-xs font-semibold px-2 py-0.5">Alerta de vento</span>
+          </div>
+          <p class="text-sm text-slate-500 mt-1">Cascais · costa · <span class="font-['IBM_Plex_Mono',monospace]">38,73° N, 9,47° O</span></p>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <a href="novo-relato.html" class="rounded bg-sky-700 text-white text-sm font-semibold px-4 py-2 hover:bg-sky-800">Relatar condições aqui</a>
+          <button type="button" class="rounded border border-slate-300 bg-white text-sm px-4 py-2 hover:bg-slate-100">★ A seguir</button>
+        </div>
+      </div>
+
+      <!-- Agora -->
+      <dl class="grid grid-cols-2 sm:grid-cols-5 gap-px rounded-lg overflow-hidden border border-slate-200 bg-slate-200 font-['IBM_Plex_Mono',monospace] tabular-nums">
+        <div class="bg-white p-4"><dt class="font-sans text-[11px] uppercase tracking-wider text-slate-500">Temperatura</dt><dd class="text-2xl font-medium">17°</dd></div>
+        <div class="bg-white p-4"><dt class="font-sans text-[11px] uppercase tracking-wider text-slate-500">Vento</dt><dd class="text-2xl font-medium text-red-700">34 <span class="text-sm text-slate-500">km/h NO</span></dd></div>
+        <div class="bg-white p-4"><dt class="font-sans text-[11px] uppercase tracking-wider text-slate-500">Rajada</dt><dd class="text-2xl font-medium">51 <span class="text-sm text-slate-500">km/h</span></dd></div>
+        <div class="bg-white p-4"><dt class="font-sans text-[11px] uppercase tracking-wider text-slate-500">Ondas</dt><dd class="text-2xl font-medium">2,4 <span class="text-sm text-slate-500">m · 11 s</span></dd></div>
+        <div class="bg-white p-4 col-span-2 sm:col-span-1"><dt class="font-sans text-[11px] uppercase tracking-wider text-slate-500">Chuva</dt><dd class="text-2xl font-medium">0,2 <span class="text-sm text-slate-500">mm</span></dd></div>
+      </dl>
+    </section>
+
+    <section class="grid gap-6 lg:grid-cols-5">
+      <!-- Gráfico previsto vs observado (mais tarde com Chart.js) -->
+      <div class="lg:col-span-3 min-w-0 rounded-lg border border-slate-200 bg-white p-5 flex flex-col gap-4">
+        <div class="flex flex-wrap items-baseline justify-between gap-2">
+          <h2 class="font-['Bricolage_Grotesque',sans-serif] text-xl font-bold">Vento previsto vs. observado</h2>
+          <p class="text-xs text-slate-500">Últimos 7 dias · km/h</p>
+        </div>
+        <div class="overflow-x-auto">
+          <svg viewBox="0 0 600 230" class="w-full min-w-[480px] h-auto" role="img" aria-label="Linha do vento previsto e pontos do vento observado nos últimos sete dias">
+            <g class="stroke-slate-200" stroke-width="1">
+              <line x1="50" y1="190" x2="575" y2="190"/><line x1="50" y1="150" x2="575" y2="150"/>
+              <line x1="50" y1="110" x2="575" y2="110"/><line x1="50" y1="30" x2="575" y2="30"/>
+            </g>
+            <g class="fill-slate-500" font-size="11" font-family="IBM Plex Mono, monospace" text-anchor="end">
+              <text x="40" y="194">0</text><text x="40" y="154">10</text><text x="40" y="114">20</text>
+              <text x="40" y="74">30</text><text x="40" y="34">40</text>
+            </g>
+            <line x1="50" y1="70" x2="575" y2="70" class="stroke-red-600" stroke-width="1.5" stroke-dasharray="5 4"/>
+            <text x="575" y="63" text-anchor="end" font-size="11" class="fill-red-700">o seu limite: 30 km/h</text>
+            <path d="M50 118 L135 102 L220 66 L305 82 L390 134 L475 142 L560 110 L560 190 L50 190 Z" class="fill-sky-600" fill-opacity="0.12"/>
+            <path d="M50 118 L135 102 L220 66 L305 82 L390 134 L475 142 L560 110" fill="none" class="stroke-sky-700" stroke-width="2.5" stroke-linejoin="round"/>
+            <circle cx="560" cy="110" r="4.5" class="fill-sky-700"/>
+            <g class="fill-white stroke-slate-900" stroke-width="2">
+              <circle cx="50" cy="110" r="5"/><circle cx="135" cy="90" r="5"/><circle cx="220" cy="46" r="5"/>
+              <circle cx="305" cy="86" r="5"/><circle cx="390" cy="130" r="5"/><circle cx="560" cy="102" r="5"/>
+            </g>
+            <g class="fill-slate-500" font-size="11" text-anchor="middle">
+              <text x="50" y="212">Qui 22</text><text x="135" y="212">Sex 23</text><text x="220" y="212">Sáb 24</text>
+              <text x="305" y="212">Dom 25</text><text x="390" y="212">Seg 26</text><text x="475" y="212">Ter 27</text><text x="560" y="212">Qua 28</text>
+            </g>
+          </svg>
+        </div>
+        <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+          <span class="flex items-center gap-2"><span class="inline-block h-0.5 w-6 bg-sky-700"></span>Previsto (Open-Meteo)</span>
+          <span class="flex items-center gap-2"><span class="inline-block h-3 w-3 rounded-full border-2 border-slate-900 bg-white"></span>Média dos relatos</span>
+          <span class="text-slate-500">Terça sem relatos</span>
+        </div>
+      </div>
+
+      <!-- Previsão por hora -->
+      <div class="lg:col-span-2 min-w-0 rounded-lg border border-slate-200 bg-white p-5 flex flex-col gap-3">
+        <h2 class="font-['Bricolage_Grotesque',sans-serif] text-xl font-bold">Próximas horas</h2>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm font-['IBM_Plex_Mono',monospace] tabular-nums">
+            <thead>
+              <tr class="text-left font-sans text-[11px] uppercase tracking-wider text-slate-500">
+                <th scope="col" class="py-2 pr-3 font-medium">Hora</th><th scope="col" class="py-2 pr-3 font-medium">Temp.</th>
+                <th scope="col" class="py-2 pr-3 font-medium">Vento</th><th scope="col" class="py-2 pr-3 font-medium">Rajada</th><th scope="col" class="py-2 font-medium">Ondas</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-200">
+              <tr><td class="py-2 pr-3">19:00</td><td class="pr-3">16°</td><td class="pr-3">32</td><td class="pr-3 text-red-700 font-medium">48</td><td>2,4 m</td></tr>
+              <tr><td class="py-2 pr-3">20:00</td><td class="pr-3">15°</td><td class="pr-3">30</td><td class="pr-3 text-red-700 font-medium">45</td><td>2,5 m</td></tr>
+              <tr><td class="py-2 pr-3">21:00</td><td class="pr-3">15°</td><td class="pr-3">27</td><td class="pr-3">39</td><td>2,5 m</td></tr>
+              <tr><td class="py-2 pr-3">22:00</td><td class="pr-3">14°</td><td class="pr-3">24</td><td class="pr-3">35</td><td>2,3 m</td></tr>
+              <tr><td class="py-2 pr-3">23:00</td><td class="pr-3">14°</td><td class="pr-3">21</td><td class="pr-3">31</td><td>2,2 m</td></tr>
+              <tr><td class="py-2 pr-3">00:00</td><td class="pr-3">13°</td><td class="pr-3">18</td><td class="pr-3">27</td><td>2,0 m</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Relatos deste local -->
+    <section aria-labelledby="t-relatos-local" class="flex flex-col gap-4">
+      <h2 id="t-relatos-local" class="font-['Bricolage_Grotesque',sans-serif] text-xl font-bold">Relatos neste local</h2>
+      <ul class="flex flex-col divide-y divide-slate-200 border-y border-slate-200">
+        <li class="py-4 flex flex-col gap-1">
+          <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
+            <span class="font-semibold">marta.r</span><span class="text-slate-500">hoje, 17:40</span>
+            <span class="ml-auto font-['IBM_Plex_Mono',monospace] text-xs rounded bg-red-100 text-red-700 px-2 py-0.5">vento 38 obs. / 34 prev.</span>
+          </div>
+          <p>Rajadas muito fortes na zona norte da praia. Kitesurf só para quem tem experiência.</p>
+          <p class="text-sm text-slate-500">Nota <span aria-label="2 em 5">★★☆☆☆</span></p>
+        </li>
+        <li class="py-4 flex flex-col gap-1">
+          <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
+            <span class="font-semibold">tiago.lm</span><span class="text-slate-500">seg 26, 09:10</span>
+            <span class="ml-auto font-['IBM_Plex_Mono',monospace] text-xs rounded bg-emerald-100 text-emerald-700 px-2 py-0.5">vento 15 obs. / 14 prev.</span>
+          </div>
+          <p>Manhã calma, mar com pouca ondulação. Bom para paddle.</p>
+          <p class="text-sm text-slate-500">Nota <span aria-label="4 em 5">★★★★☆</span></p>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-200">
+    <div class="mx-auto max-w-6xl px-4 py-6 text-xs text-slate-500 flex flex-wrap justify-between gap-2">
+      <p>Aragem · projeto de demonstração para Aplicações Web</p>
+      <p>Previsões: Open-Meteo · todos os valores são dados de exemplo</p>
+    </div>
+  </footer>
+</body>
+</html>
