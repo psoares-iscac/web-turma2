@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <script src="js/menu.js" defer></script>
+  <script src="js/palavra-passe.js" defer></script>
 </head>
 <body class="bg-slate-100 text-slate-900 font-['IBM_Plex_Sans',sans-serif] antialiased min-h-screen flex flex-col">
 
@@ -51,7 +52,11 @@
             <label for="password" class="text-sm font-medium">Palavra-passe</label>
             <a href="#" class="text-xs text-sky-700 hover:underline">Esqueceu-se?</a>
           </div>
-          <input id="password" name="password" type="password" required minlength="8" autocomplete="current-password" class="rounded border border-slate-300 bg-slate-50 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-sky-600">
+          <!-- Exercício 1: o botão "Mostrar" é controlado por js/palavra-passe.js -->
+          <div class="relative">
+            <input id="password" name="password" type="password" required minlength="8" autocomplete="current-password" class="w-full rounded border border-slate-300 bg-slate-50 pl-3 pr-20 py-2 focus:outline-none focus:ring-2 focus:ring-sky-600">
+            <button type="button" id="mostrar-password" aria-controls="password" aria-pressed="false" class="absolute inset-y-0 right-0 px-3 text-xs font-semibold text-sky-700 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-600 rounded">Mostrar</button>
+          </div>
         </div>
         <label class="flex items-center gap-2 text-sm">
           <input id="lembrar" name="lembrar" type="checkbox" class="h-4 w-4 rounded border-slate-300 accent-sky-700">

@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <script src="js/menu.js" defer></script>
+  <script src="js/novo-relato.js" defer></script>
 </head>
 <body class="bg-slate-100 text-slate-900 font-['IBM_Plex_Sans',sans-serif] antialiased">
 
@@ -33,14 +34,22 @@
     </div>
   </header>
 
-  <main class="mx-auto max-w-2xl px-4 py-8 flex flex-col gap-6">
+  <main class="mx-auto max-w-5xl px-4 py-8 flex flex-col gap-6">
     <div>
       <h1 class="font-['Bricolage_Grotesque',sans-serif] text-3xl sm:text-4xl font-bold tracking-tight">Novo relato</h1>
       <p class="text-slate-500 mt-1">Conte o que encontrou. Os valores que medir ou estimar são comparados com a previsão para esse local e hora.</p>
     </div>
 
-    <!-- Mais tarde: action="api/relatos.php" method="post" e validação em JavaScript -->
-    <form action="#" method="post" enctype="multipart/form-data" class="rounded-lg border border-slate-200 bg-white p-6 flex flex-col gap-6">
+    <!-- Exercício 7: mensagem mostrada quando o formulário passa a validação -->
+    <div id="mensagem-sucesso" role="status" class="hidden rounded-lg border border-emerald-300 bg-emerald-50 p-4 text-emerald-800">
+      <p class="font-semibold">Relato pronto a publicar.</p>
+      <p class="text-sm">Todos os campos estão corretos. Quando houver servidor (PHP), o relato será gravado.</p>
+    </div>
+
+    <div class="grid gap-6 lg:grid-cols-[1fr_20rem] items-start">
+    <!-- novalidate: desliga as mensagens do browser; a validação é feita em js/novo-relato.js (exercício 7) -->
+    <!-- Mais tarde: action="api/relatos.php" method="post" -->
+    <form id="form-relato" action="#" method="post" enctype="multipart/form-data" novalidate class="min-w-0 rounded-lg border border-slate-200 bg-white p-6 flex flex-col gap-6">
 
       <fieldset class="flex flex-col gap-4">
         <legend class="font-['Bricolage_Grotesque',sans-serif] text-lg font-bold mb-2">Onde e quando</legend>
@@ -51,11 +60,13 @@
             <option value="1">Praia do Guincho</option><option value="2">Supertubos</option><option value="3">Torre</option>
             <option value="4">Trilho da Pena</option><option value="5">Arrábida</option>
           </select>
+          <p id="erro-local" class="mensagem-erro hidden text-xs text-red-700"></p>
         </div>
         <div class="grid gap-4 sm:grid-cols-2">
           <div class="flex flex-col gap-1">
             <label for="data" class="text-sm font-medium">Data <span class="text-red-700">*</span></label>
             <input id="data" name="data" type="date" required max="2026-10-28" value="2026-10-28" class="rounded border border-slate-300 bg-slate-50 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-sky-600">
+            <p id="erro-data" class="mensagem-erro hidden text-xs text-red-700"></p>
           </div>
           <div class="flex flex-col gap-1">
             <label for="hora" class="text-sm font-medium">Hora <span class="text-red-700">*</span></label>
@@ -71,6 +82,7 @@
           <div class="flex flex-col gap-1">
             <label for="vento" class="text-sm font-medium">Vento <span class="text-slate-500 font-normal">(km/h)</span></label>
             <input id="vento" name="vento" type="number" min="0" max="200" step="1" placeholder="ex.: 25" class="rounded border border-slate-300 bg-slate-50 px-3 py-2 font-['IBM_Plex_Mono',monospace] focus:outline-none focus:ring-2 focus:ring-sky-600">
+            <p id="erro-vento" class="mensagem-erro hidden text-xs text-red-700"></p>
           </div>
           <div class="flex flex-col gap-1">
             <label for="temp" class="text-sm font-medium">Temperatura <span class="text-slate-500 font-normal">(°C)</span></label>
@@ -104,12 +116,19 @@
             <label><input type="radio" name="nota" value="4" class="peer sr-only"><span class="block text-center rounded border border-slate-300 py-2 cursor-pointer peer-checked:bg-sky-700 peer-checked:border-sky-700 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-sky-600">4</span></label>
             <label><input type="radio" name="nota" value="5" class="peer sr-only"><span class="block text-center rounded border border-slate-300 py-2 cursor-pointer peer-checked:bg-sky-700 peer-checked:border-sky-700 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-sky-600">5</span></label>
           </div>
-          <p class="text-xs text-slate-500">1 = condições más · 5 = condições excelentes</p>
+          <!-- Exercício 5: o texto da nota escolhida aparece aqui -->
+          <p id="texto-nota" class="text-sm text-slate-500" aria-live="polite">1 = condições más · 5 = condições excelentes</p>
+          <p id="erro-nota" class="mensagem-erro hidden text-xs text-red-700"></p>
         </div>
         <div class="flex flex-col gap-1">
           <label for="texto" class="text-sm font-medium">Descrição <span class="text-red-700">*</span></label>
-          <textarea id="texto" name="texto" rows="4" required minlength="10" maxlength="500" placeholder="ex.: Rajadas fortes na zona norte da praia." class="peer rounded border border-slate-300 bg-slate-50 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-sky-600 invalid:[&:not(:placeholder-shown)]:border-red-500"></textarea>
-          <p class="text-xs text-slate-500">Entre 10 e 500 caracteres.</p>
+          <textarea id="texto" name="texto" rows="4" required minlength="10" maxlength="500" placeholder="ex.: Rajadas fortes na zona norte da praia." class="rounded border border-slate-300 bg-slate-50 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-sky-600"></textarea>
+          <div class="flex flex-wrap justify-between gap-2 text-xs">
+            <span class="text-slate-500">Entre 10 e 500 caracteres.</span>
+            <!-- Exercício 4: contador de caracteres -->
+            <span id="contador-texto" class="font-['IBM_Plex_Mono',monospace] tabular-nums text-slate-500" aria-live="polite">0 / 500</span>
+          </div>
+          <p id="erro-texto" class="mensagem-erro hidden text-xs text-red-700"></p>
         </div>
         <div class="flex flex-col gap-1">
           <label for="foto" class="text-sm font-medium">Fotografia <span class="text-slate-500 font-normal">(opcional, JPG ou PNG até 2 MB)</span></label>
@@ -123,6 +142,25 @@
         <p class="text-xs text-slate-500 sm:ml-auto"><span class="text-red-700">*</span> campo obrigatório</p>
       </div>
     </form>
+
+    <!-- Exercício 6: pré-visualização do relato, atualizada enquanto se escreve -->
+    <aside class="lg:sticky lg:top-4 flex flex-col gap-2" aria-labelledby="t-previa">
+      <h2 id="t-previa" class="text-xs font-semibold uppercase tracking-widest text-slate-500">Pré-visualização</h2>
+      <article class="rounded-lg border border-slate-200 bg-white p-4 flex flex-col gap-2">
+        <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
+          <span id="prev-local" class="font-semibold">Local por escolher</span>
+          <span id="prev-data" class="text-slate-500">--</span>
+        </div>
+        <p id="prev-texto" class="text-slate-400 italic break-words">A descrição aparece aqui.</p>
+        <p id="prev-medicoes" class="font-['IBM_Plex_Mono',monospace] text-xs text-slate-500">Sem medições</p>
+        <div class="flex flex-wrap items-center justify-between gap-2 text-sm">
+          <span class="text-slate-500">Nota <span id="prev-nota">☆☆☆☆☆</span></span>
+          <span id="prev-ceu" class="rounded-full bg-slate-100 text-slate-700 px-2 py-0.5 text-xs">Limpo</span>
+        </div>
+      </article>
+      <p class="text-xs text-slate-500">É assim que o relato vai aparecer na lista de relatos.</p>
+    </aside>
+    </div>
   </main>
 
   <footer class="border-t border-slate-200">
